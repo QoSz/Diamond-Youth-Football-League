@@ -58,6 +58,7 @@ export default function Hero() {
                 priority
                 className="object-cover rounded-[1.618rem]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                unoptimized
               />
               {/* Stats overlay */}
               <div className="absolute left-4 -bottom-8 lg:-left-8 lg:bottom-8 bg-white p-3 sm:p-4 rounded-[1.618rem] shadow-xl w-[calc(100%-2rem)] lg:w-auto">
