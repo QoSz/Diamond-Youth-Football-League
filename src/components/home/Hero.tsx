@@ -14,7 +14,7 @@ export default function Hero() {
               Like a Pro...
             </h1>
             <p className="text-gray-300 text-lg sm:text-xl md:text-xl max-w-lg mx-auto lg:mx-0">
-              Building tomorrow's champions through rigorous training and competitive games. 
+              Building tomorrow&apos;s champions through rigorous training and competitive games. 
               Developing tactical skills, sportsmanship, and team pride.
             </p>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">

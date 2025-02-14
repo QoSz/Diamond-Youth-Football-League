@@ -7,7 +7,7 @@ export default function LeagueValue() {
       <div className="container mx-auto px-4">
         {/* Main Question */}
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-black">
-          Tired of poorly organized leagues hindering your team's progress?
+          Tired of poorly organized leagues hindering your team&apos;s progress?
         </h2>
 
         {/* Problems Section */}
@@ -94,7 +94,7 @@ export default function LeagueValue() {
             href="/contact"
             className="inline-flex items-center px-8 py-4 rounded-lg bg-[#FF4500] text-white font-semibold hover:bg-[#FF2200] transition-colors text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all"
           >
-            Claim Your Team's Spot Now
+            Claim Your Team&apos;s Spot Now
             <svg 
               className="ml-2 w-5 h-5" 
               fill="none" 
