@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/shared/navigation/Navigation";
-
+import Footer from "@/components/shared/footer/Footer";
 const roboto = Roboto({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
@@ -23,6 +23,7 @@ export default function RootLayout({
       <body className={`${roboto.className} antialiased`}>
         <Navigation />
         {children}
+        <Footer />
       </body>
     </html>
   );

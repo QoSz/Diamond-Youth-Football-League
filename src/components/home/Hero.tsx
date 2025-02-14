@@ -4,13 +4,15 @@ import Link from 'next/link';
 export default function Hero() {
   return (
     <section className="relative min-h-[600px] bg-gradient-to-br from-black to-[#1A1A1A] overflow-hidden">
-      <div className="container mx-auto px-4 h-full py-12">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 items-center">
+      <div className="container mx-auto px-4 lg:px-8 h-full py-12">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-2 items-center justify-items-center">
           {/* Text Content */}
-          <div className="relative z-10 space-y-6 text-center lg:text-left">
+          <div className="relative z-10 space-y-6 text-center lg:text-left lg:pr-8">
             <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Develop Your
-              <span className="block text-[#FF4500]">Football Skills</span>
+              <span className="block bg-gradient-to-r from-[#FF4500] to-[#FF6B00] text-transparent bg-clip-text">
+                Football Skills
+              </span>
               Like a Pro...
             </h1>
             <p className="text-gray-300 text-lg sm:text-xl md:text-xl max-w-lg mx-auto lg:mx-0">
@@ -20,7 +22,7 @@ export default function Hero() {
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Link
                 href="/contact"
-                className="inline-flex items-center px-6 py-3 rounded-[1.618rem] bg-[#FF4500] text-white font-semibold hover:bg-[#FF2200] transition-colors text-base sm:text-lg"
+                className="inline-flex items-center px-6 py-3 rounded-[1.618rem] bg-gradient-to-r from-[#FF4500] to-[#FF6B00] text-white font-semibold hover:opacity-90 transition-opacity text-base sm:text-lg"
               >
                 Join League
                 <svg 
@@ -39,7 +41,7 @@ export default function Hero() {
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center px-6 py-3 rounded-[1.618rem] border-2 border-[#FF4500] text-white font-semibold hover:bg-[#FF4500] transition-colors text-base sm:text-lg"
+                className="inline-flex items-center px-6 py-3 rounded-[1.618rem] border-2 border-[#FF4500] text-white font-semibold hover:bg-gradient-to-r hover:from-[#FF4500] hover:to-[#FF6B00] hover:border-transparent transition-all text-base sm:text-lg"
               >
                 About Us
               </Link>
@@ -47,7 +49,7 @@ export default function Hero() {
           </div>
 
           {/* Image Side */}
-          <div className="relative w-full order-last">
+          <div className="relative w-full order-last lg:pl-8">
             <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] w-full">
               <Image
                 src="/images/Hero-image.jpg"
