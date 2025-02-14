@@ -69,9 +69,9 @@ export default function About() {
               </h2>
               <p className="text-gray-800 text-lg text-justify leading-relaxed">
                 Imagine feeling confident as a coach, knowing that your team is participating in a
-                structured, well-managed league. Picture the joy on your players' faces as they compete
+                structured, well-managed league. Picture the joy on your players&apos; faces as they compete
                 against other dedicated teams, all while enjoying ample game time and development
-                opportunities. This is not just a vision—it's a reality for those who choose to join the
+                opportunities. This is not just a vision—it&apos;s a reality for those who choose to join the
                 Diamond Youth Football League.
               </p>
             </div>
