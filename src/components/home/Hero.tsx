@@ -52,7 +52,7 @@ export default function Hero() {
           <div className="relative w-full order-last lg:pl-8">
             <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] w-full">
               <Image
-                src="/images/Hero-image.jpg"
+                src="images/Hero-Image.jpg"
                 alt="Young footballer in action"
                 fill
                 priority
