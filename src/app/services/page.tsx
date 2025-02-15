@@ -35,7 +35,7 @@ export default function Services() {
 
         {/* Service Cards Grid */}
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 py-8">
             {[
               {
                 title: 'Fixtures',
@@ -113,7 +113,7 @@ export default function Services() {
         </div>
 
         {/* Format Section */}
-        <div className="px-0 sm:px-4 mb-16">
+        <div className="px-0 sm:px-4 py-8">
           <h2 className="text-3xl font-bold text-center text-[#fff8f5] pb-4">
             Format
           </h2>
@@ -222,13 +222,7 @@ export default function Services() {
                 href="/points"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-[#FF4500] to-[#FF6B00] text-white font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
               >
-                Points Mechanism
-              </Link>
-              <Link
-                href="/rules"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-[#FF4500] to-[#FF6B00] text-white font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-              >
-                Rules
+                Rules & Points Mechanism
               </Link>
             </div>
           </div>
