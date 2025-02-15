@@ -9,16 +9,18 @@ export default function Contact() {
     return (
         <main className="relative min-h-screen py-16 px-4 md:px-8">
             {/* Background Image */}
-            <div className="absolute inset-0 z-0">
+            <div className="fixed inset-0 z-0">
                 <Image
                     src="/images/Contact-Background.png"
                     alt="Contact Background"
                     fill
-                    className="object-cover"
                     priority
+                    quality={75}
+                    className="object-cover object-top"
+                    sizes="100vw"
                 />
                 {/* Blur Overlay */}
-                <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto">
