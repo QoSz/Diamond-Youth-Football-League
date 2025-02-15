@@ -188,7 +188,7 @@ export default function Services() {
                       u12: '1st Aider provided',
                       u15: '1st Aider not provided'
                     }
-                  ].map((row, index) => (
+                  ].map((row) => (
                     <tr key={row.category}>
                       <td className="px-2 py-2 md:px-4 font-bold text-black text-xs md:text-sm lg:text-base">
                         {row.category}
