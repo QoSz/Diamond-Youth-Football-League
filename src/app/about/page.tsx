@@ -5,15 +5,23 @@ import Image from 'next/image';
 export default function About() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-white">
-      {/* Hero Section */}
-      <section className="py-4 px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent">
-          About Us
-        </h1>
-      </section>
+      {/* Background Image Section */}
+      <div className="relative w-full h-[200px]">
+        <Image
+          src="/images/About-Us.png"
+          alt="Football field background"
+          fill
+          className="object-cover pb-8"
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent">
+            About Us
+          </h1>
+        </div>
+      </div>
 
       {/* Mission Statement */}
-      <section className="py-4 px-4">
+      <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <p className="text-xl text-justify text-gray-800 leading-relaxed">
             Every young footballer deserves a fair chance to shine on the field, yet far too many
@@ -88,7 +96,7 @@ export default function About() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-8 px-4 mb-8">
+      <section className="py-8 pb-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-[1.618rem] p-8 shadow-xl border border-orange-100 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent">

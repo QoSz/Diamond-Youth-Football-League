@@ -52,27 +52,13 @@ export default function Hero() {
           <div className="relative w-full order-last lg:pl-8">
             <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] w-full">
               <Image
-                src="images/Hero-Image.jpg"
+                src="/images/Hero-Image.jpg"
                 alt="Young footballer in action"
                 fill
                 priority
                 className="object-cover rounded-[1.618rem]"
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                unoptimized
               />
-              {/* Stats overlay */}
-              <div className="absolute left-4 -bottom-8 lg:-left-8 lg:bottom-8 bg-white p-3 sm:p-4 rounded-[1.618rem] shadow-xl w-[calc(100%-2rem)] lg:w-auto">
-                <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                  <div className="text-center">
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-black">250+</p>
-                    <p className="text-[10px] sm:text-xs lg:text-sm text-[#FF4500]">Active Players</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-black">15+</p>
-                    <p className="text-[10px] sm:text-xs lg:text-sm text-[#FF4500]">Years Experience</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
