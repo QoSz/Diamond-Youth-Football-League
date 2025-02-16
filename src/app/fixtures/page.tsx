@@ -11,27 +11,34 @@ export default async function Fixtures() {
     console.log('=== Fixtures Page Component Start ===');
     
     try {
+        console.log('Environment check:', {
+            nodeEnv: process.env.NODE_ENV,
+            apiUrl: process.env.NEXT_PUBLIC_API_URL,
+            hasMongoUri: !!process.env.MONGODB_URI
+        });
+
         console.log('Starting API requests...');
         console.log('API URL:', process.env.NEXT_PUBLIC_API_URL);
         
+        const fetchWithErrorHandling = async (url: string, category: string) => {
+            const res = await fetch(url, { cache: 'no-store' });
+            if (!res.ok) {
+                const errorData = await res.json();
+                console.error(`${category} fetch failed:`, {
+                    status: res.status,
+                    statusText: res.statusText,
+                    errorData
+                });
+                throw new Error(`Failed to fetch ${category}: ${errorData.error}`);
+            }
+            return res.json();
+        };
+
         const [u12Fixtures, u15Fixtures, u12Teams, u15Teams] = await Promise.all([
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/fixtures?category=U12`, { 
-                cache: 'no-store',
-            }).then(async (res) => {
-                if (!res.ok) {
-                    const errorData = await res.json();
-                    console.error('U12 Fixtures fetch failed:', {
-                        status: res.status,
-                        statusText: res.statusText,
-                        errorData
-                    });
-                    throw new Error(`Failed to fetch U12 fixtures: ${errorData.error}`);
-                }
-                return res.json();
-            }),
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/fixtures?category=U15`, { cache: 'no-store' }).then(res => res.json()),
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/teams?category=U12`, { cache: 'no-store' }).then(res => res.json()),
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/teams?category=U15`, { cache: 'no-store' }).then(res => res.json()),
+            fetchWithErrorHandling(`${process.env.NEXT_PUBLIC_API_URL}/api/fixtures?category=U12`, 'U12 Fixtures'),
+            fetchWithErrorHandling(`${process.env.NEXT_PUBLIC_API_URL}/api/fixtures?category=U15`, 'U15 Fixtures'),
+            fetchWithErrorHandling(`${process.env.NEXT_PUBLIC_API_URL}/api/teams?category=U12`, 'U12 Teams'),
+            fetchWithErrorHandling(`${process.env.NEXT_PUBLIC_API_URL}/api/teams?category=U15`, 'U15 Teams'),
         ]);
 
         console.log('Data fetched successfully:', {
@@ -186,9 +193,11 @@ export default async function Fixtures() {
             </main>
         );
     } catch (error) {
-        console.error('Error in Fixtures page:', {
+        console.error('Detailed error in Fixtures page:', {
             error: error instanceof Error ? error.message : 'Unknown error',
             stack: error instanceof Error ? error.stack : undefined,
+            environment: process.env.NODE_ENV,
+            apiUrl: process.env.NEXT_PUBLIC_API_URL
         });
 
         return (

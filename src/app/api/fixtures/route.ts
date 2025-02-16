@@ -2,6 +2,7 @@ import { connectToDatabase } from '@/lib/mongodb';
 import { Fixture } from '@/models/Fixture';
 import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
+import { validateEnv } from '@/lib/env';
 
 // Force dynamic rendering of this route
 export const dynamic = 'force-dynamic';
@@ -9,6 +10,8 @@ export const fetchCache = 'force-no-store';
 
 // GET all fixtures by category
 export async function GET(request: Request) {
+  validateEnv();
+  
   console.log('=== Fixtures API Route Start ===');
   console.log('Request URL:', request.url);
   
@@ -47,7 +50,6 @@ export async function GET(request: Request) {
     console.error('Detailed error in fixtures route:', {
       error: error instanceof Error ? error.message : 'Unknown error',
       stack: error instanceof Error ? error.stack : undefined,
-      category: searchParamsObj.get('category'),
       mongooseState: {
         readyState: mongoose.connection.readyState,
         host: mongoose.connection.host,
