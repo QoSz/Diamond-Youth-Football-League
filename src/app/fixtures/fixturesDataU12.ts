@@ -1,6 +1,6 @@
-import { FixtureData } from '../types';
+import { FixtureData } from './types';
 
-export const fixturesData: FixtureData[] = [
+export const fixturesDataU12: FixtureData[] = [
     {
         date: "19th Jan",
         category: 'U12',

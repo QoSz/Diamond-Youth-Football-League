@@ -1,17 +1,18 @@
-import type { Match } from '@/lib/api';  // Import Match as a type
-
-// Re-export Match as a type
-export type { Match };  // Use 'export type' for re-exporting types
+export interface Match {
+    time: string;
+    team1: string;
+    team2: string;
+    score1: string | number;
+    score2: string | number;
+}
 
 export interface FixtureData {
-    _id?: string;
     date: string;
-    matches: Match[];  // Now Match is properly imported and can be used
     category: 'U12' | 'U15';
+    matches: Match[];
 }
 
 export interface TeamStats {
-    _id?: string;
     teamName: string;
     matchesPlayed: number;
     won: number;
@@ -23,4 +24,12 @@ export interface TeamStats {
     bonusPoints: number;
     totalPoints: number;
     category: 'U12' | 'U15';
-} 
+}
+
+export interface PlayoffMatch {
+    match: number;
+    time: string;
+    team1: string;
+    team2: string;
+    type: string;
+}

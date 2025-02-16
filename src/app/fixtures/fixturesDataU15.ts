@@ -1,4 +1,4 @@
-import { FixtureData } from '../types';
+import { FixtureData } from './types';
 
 export const fixturesDataU15: FixtureData[] = [
     {
