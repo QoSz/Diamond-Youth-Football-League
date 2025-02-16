@@ -8,13 +8,38 @@ import { FixtureData } from './types';
 export const dynamic = 'force-dynamic';
 
 export default async function Fixtures() {
+    console.log('=== Fixtures Page Component Start ===');
+    
     try {
+        console.log('Starting API requests...');
+        console.log('API URL:', process.env.NEXT_PUBLIC_API_URL);
+        
         const [u12Fixtures, u15Fixtures, u12Teams, u15Teams] = await Promise.all([
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/fixtures?category=U12`, { cache: 'no-store' }).then(res => res.json()),
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/fixtures?category=U12`, { 
+                cache: 'no-store',
+            }).then(async (res) => {
+                if (!res.ok) {
+                    const errorData = await res.json();
+                    console.error('U12 Fixtures fetch failed:', {
+                        status: res.status,
+                        statusText: res.statusText,
+                        errorData
+                    });
+                    throw new Error(`Failed to fetch U12 fixtures: ${errorData.error}`);
+                }
+                return res.json();
+            }),
             fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/fixtures?category=U15`, { cache: 'no-store' }).then(res => res.json()),
             fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/teams?category=U12`, { cache: 'no-store' }).then(res => res.json()),
             fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/teams?category=U15`, { cache: 'no-store' }).then(res => res.json()),
         ]);
+
+        console.log('Data fetched successfully:', {
+            u12FixturesCount: u12Fixtures?.length,
+            u15FixturesCount: u15Fixtures?.length,
+            u12TeamsCount: u12Teams?.length,
+            u15TeamsCount: u15Teams?.length,
+        });
 
         // Add this sorting function
         const sortFixtures = (fixtures: FixtureData[]) => {
@@ -161,7 +186,23 @@ export default async function Fixtures() {
             </main>
         );
     } catch (error) {
-        console.error('Error fetching data:', error);
-        return <div>Error loading data. Please try again later.</div>;
+        console.error('Error in Fixtures page:', {
+            error: error instanceof Error ? error.message : 'Unknown error',
+            stack: error instanceof Error ? error.stack : undefined,
+        });
+
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-center p-4">
+                    <h2 className="text-xl font-bold text-red-600 mb-2">Error loading data</h2>
+                    <p className="text-gray-600">
+                        {error instanceof Error ? error.message : 'Please try again later'}
+                    </p>
+                    <pre className="mt-4 text-left text-sm text-gray-500 bg-gray-100 p-4 rounded">
+                        {error instanceof Error ? error.stack : 'No stack trace available'}
+                    </pre>
+                </div>
+            </div>
+        );
     }
 }

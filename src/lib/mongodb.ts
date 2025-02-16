@@ -28,7 +28,11 @@ if (!global.mongooseCache) {
 }
 
 export async function connectToDatabase() {
+  console.log('Connection attempt to MongoDB...');
+  console.log('Current connection state:', mongoose.connection.readyState);
+  
   if (cached.conn) {
+    console.log('Using cached connection');
     return cached.conn;
   }
 
@@ -37,17 +41,29 @@ export async function connectToDatabase() {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose;
-    });
+    console.log('Creating new connection promise');
+    cached.promise = mongoose.connect(MONGODB_URI, opts)
+      .then((mongoose) => {
+        console.log('MongoDB connected successfully');
+        return mongoose;
+      })
+      .catch((error) => {
+        console.error('MongoDB connection error:', {
+          message: error.message,
+          code: error.code,
+          stack: error.stack
+        });
+        throw error;
+      });
   }
 
   try {
     cached.conn = await cached.promise;
+    console.log('Connection established');
+    return cached.conn;
   } catch (e) {
+    console.error('Error in connectToDatabase:', e);
     cached.promise = null;
     throw e;
   }
-
-  return cached.conn;
 } 
