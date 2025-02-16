@@ -1,0 +1,108 @@
+import { TeamStats } from '../types';
+
+export const leagueDataU12: TeamStats[] = [
+    {
+        teamName: "Ligi Ndogo",
+        category: 'U12',
+        matchesPlayed: 4,
+        won: 3,
+        drawn: 0,
+        lost: 1,
+        goalsFor: 28,
+        goalsAgainst: 5,
+        goalDifference: 23,
+        bonusPoints: 0,
+        totalPoints: 9
+    },
+    {
+        teamName: "Air FC",
+        category: 'U12',
+        matchesPlayed: 3,
+        won: 3,
+        drawn: 0,
+        lost: 0,
+        goalsFor: 16,
+        goalsAgainst: 1,
+        goalDifference: 15,
+        bonusPoints: 0,
+        totalPoints: 9
+    },
+    {
+        teamName: "KYSA",
+        category: 'U12',
+        matchesPlayed: 4,
+        won: 2,
+        drawn: 1,
+        lost: 1,
+        goalsFor: 10,
+        goalsAgainst: 9,
+        goalDifference: 1,
+        bonusPoints: 0,
+        totalPoints: 7
+    },
+    {
+        teamName: "Diamond FC",
+        category: 'U12',
+        matchesPlayed: 4,
+        won: 2,
+        drawn: 0,
+        lost: 2,
+        goalsFor: 16,
+        goalsAgainst: 10,
+        goalDifference: 6,
+        bonusPoints: 0,
+        totalPoints: 6
+    },
+    {
+        teamName: "Blue Bombers",
+        category: 'U12',
+        matchesPlayed: 4,
+        won: 2,
+        drawn: 0,
+        lost: 2,
+        goalsFor: 12,
+        goalsAgainst: 16,
+        goalDifference: -4,
+        bonusPoints: 0,
+        totalPoints: 6
+    },
+    {
+        teamName: "Gachie Youth",
+        category: 'U12',
+        matchesPlayed: 4,
+        won: 2,
+        drawn: 0,
+        lost: 2,
+        goalsFor: 7,
+        goalsAgainst: 13,
+        goalDifference: -6,
+        bonusPoints: 0,
+        totalPoints: 6
+    },
+    {
+        teamName: "Africheza",
+        category: 'U12',
+        matchesPlayed: 3,
+        won: 0,
+        drawn: 1,
+        lost: 2,
+        goalsFor: 5,
+        goalsAgainst: 16,
+        goalDifference: -11,
+        bonusPoints: 1,
+        totalPoints: 2
+    },
+    {
+        teamName: "Karen Sports",
+        category: 'U12',
+        matchesPlayed: 4,
+        won: 0,
+        drawn: 0,
+        lost: 4,
+        goalsFor: 1,
+        goalsAgainst: 28,
+        goalDifference: -27,
+        bonusPoints: 0,
+        totalPoints: 0
+    },
+]; 
