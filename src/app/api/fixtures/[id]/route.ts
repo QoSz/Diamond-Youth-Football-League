@@ -4,12 +4,13 @@ import { NextResponse } from 'next/server';
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     await connectToDatabase();
     const body = await request.json();
-    const updatedFixture = await Fixture.findByIdAndUpdate(params.id, body, {
+    const updatedFixture = await Fixture.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true,
     });
@@ -22,13 +23,14 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     await connectToDatabase();
     
     // Check if the fixture exists first
-    const fixture = await Fixture.findById(params.id);
+    const fixture = await Fixture.findById(id);
     if (!fixture) {
       return NextResponse.json(
         { error: 'Fixture not found' },
@@ -37,7 +39,7 @@ export async function DELETE(
     }
 
     // Delete the fixture
-    await Fixture.findByIdAndDelete(params.id);
+    await Fixture.findByIdAndDelete(id);
     
     return NextResponse.json(
       { message: 'Fixture deleted successfully' },
