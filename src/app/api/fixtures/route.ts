@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 
 // Force dynamic rendering of this route
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 // GET all fixtures by category
 export async function GET(request: Request) {
@@ -16,11 +17,15 @@ export async function GET(request: Request) {
     const query = category ? { category } : {};
     const fixtures = await Fixture.find(query).sort({ timestamp: 1 });
     
+    if (!fixtures || fixtures.length === 0) {
+      return NextResponse.json([], { status: 200 }); // Return empty array instead of error
+    }
+    
     return NextResponse.json(fixtures);
   } catch (error) {
     console.error('Error fetching fixtures:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch fixtures' },
+      { error: 'Failed to fetch fixtures', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

@@ -3,17 +3,21 @@ import MobileFixtures from './MobileFixtures';
 import PlayoffStructure from './PlayoffStructure';
 import LeagueTable from './LeagueTable';
 import { FixtureData } from './types';
+import { getFixtures, getTeams } from '@/lib/api';
 
-// Force dynamic rendering for this page to avoid static optimization issues.
+// Force dynamic rendering for this page
 export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 export default async function Fixtures() {
     try {
+        // Use the API functions instead of direct fetch calls
         const [u12Fixtures, u15Fixtures, u12Teams, u15Teams] = await Promise.all([
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/fixtures?category=U12`, { cache: 'no-store' }).then(res => res.json()),
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/fixtures?category=U15`, { cache: 'no-store' }).then(res => res.json()),
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/teams?category=U12`, { cache: 'no-store' }).then(res => res.json()),
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/teams?category=U15`, { cache: 'no-store' }).then(res => res.json()),
+            getFixtures('U12'),
+            getFixtures('U15'),
+            getTeams('U12'),
+            getTeams('U15'),
         ]);
 
         // Add this sorting function
@@ -162,6 +166,16 @@ export default async function Fixtures() {
         );
     } catch (error) {
         console.error('Error fetching data:', error);
-        return <div>Error loading data. Please try again later.</div>;
+        // Provide more detailed error information
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-center p-4">
+                    <h2 className="text-xl font-bold text-red-600 mb-2">Error loading data</h2>
+                    <p className="text-gray-600">
+                        {error instanceof Error ? error.message : 'Please try again later'}
+                    </p>
+                </div>
+            </div>
+        );
     }
 }
