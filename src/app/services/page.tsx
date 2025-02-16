@@ -48,14 +48,14 @@ export default function Services() {
                 title: 'Results',
                 description: 'View all results',
                 icon: Trophy,
-                href: '/results',
+                href: '#',
                 gradient: 'from-[#FF4500] to-[#FF6B00]'
               },
               {
                 title: 'Tables',
                 description: 'View all tables',
                 icon: ListOrdered,
-                href: '/tables',
+                href: '#',
                 gradient: 'from-[#FF4500] to-[#FF6B00]'
               }
             ].map((item, index) => (
