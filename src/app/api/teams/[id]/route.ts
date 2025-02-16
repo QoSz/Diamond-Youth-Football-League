@@ -4,12 +4,14 @@ import { NextResponse } from 'next/server';
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
+
   try {
     await connectToDatabase();
     const body = await request.json();
-    const updatedTeam = await Team.findByIdAndUpdate(params.id, body, {
+    const updatedTeam = await Team.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true,
     });
