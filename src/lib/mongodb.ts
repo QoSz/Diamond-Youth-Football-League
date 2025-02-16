@@ -4,8 +4,6 @@ if (!process.env.MONGODB_URI) {
   throw new Error('Please add your Mongo URI to .env.local')
 }
 
-const MONGODB_URI = process.env.MONGODB_URI;
-
 // Define the type for our cached mongoose connection
 interface Cached {
   conn: typeof mongoose | null;
