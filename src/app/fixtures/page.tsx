@@ -4,6 +4,9 @@ import PlayoffStructure from './PlayoffStructure';
 import LeagueTable from './LeagueTable';
 import { FixtureData } from './types';
 
+// Force dynamic rendering for this page to avoid static optimization issues.
+export const dynamic = 'force-dynamic';
+
 export default async function Fixtures() {
     try {
         const [u12Fixtures, u15Fixtures, u12Teams, u15Teams] = await Promise.all([
