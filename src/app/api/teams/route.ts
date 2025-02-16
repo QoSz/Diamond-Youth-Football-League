@@ -15,7 +15,7 @@ export async function GET(request: Request) {
 
     const teams = await Team.find({ category }).sort({ totalPoints: -1 });
     return NextResponse.json(teams);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to fetch teams' }, { status: 500 });
   }
 }
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const team = await Team.create(body);
     return NextResponse.json(team, { status: 201 });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to create team' }, { status: 500 });
   }
 } 

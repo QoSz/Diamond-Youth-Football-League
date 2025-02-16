@@ -1,5 +1,14 @@
 import mongoose from 'mongoose';
 
+// Define interface for Match
+interface IMatch {
+  time: string;
+  team1: string;
+  score1: string | number | null;
+  team2: string;
+  score2: string | number | null;
+}
+
 const MatchSchema = new mongoose.Schema({
   time: String,
   team1: String,
@@ -12,7 +21,7 @@ interface IFixture {
   date: string;
   displayDate?: string;
   timestamp?: number;
-  matches: any[];
+  matches: IMatch[];
   category: 'U12' | 'U15';
 }
 

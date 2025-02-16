@@ -9,13 +9,13 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useState, useEffect } from "react";
-import { FixtureData, Match } from "@/app/fixtures/types";
+import { Fixture, Match } from "@/lib/api";
 import { createFixture, updateFixture } from "@/lib/api";
 
 interface FixtureDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  fixture: FixtureData | null;
+  fixture: Fixture | null;
   category: 'U12' | 'U15';
   onSuccess: () => void;
 }
@@ -27,7 +27,7 @@ export default function FixtureDialog({
   category,
   onSuccess,
 }: FixtureDialogProps) {
-  const [formData, setFormData] = useState<FixtureData>(() => {
+  const [formData, setFormData] = useState<Fixture>(() => {
     if (fixture) {
       return { ...fixture };
     }
@@ -85,7 +85,7 @@ export default function FixtureDialog({
   };
 
   const removeMatch = (index: number) => {
-    const newMatches = formData.matches.filter((_, i) => i !== index);
+    const newMatches = formData.matches.filter((_: Match, i: number) => i !== index);
     setFormData({ ...formData, matches: newMatches });
   };
 
@@ -115,7 +115,7 @@ export default function FixtureDialog({
               </Button>
             </div>
 
-            {formData.matches.map((match, index) => (
+            {formData.matches.map((match: Match, index: number) => (
               <div key={index} className="grid grid-cols-12 gap-2 items-center">
                 <div className="col-span-2">
                   <Input

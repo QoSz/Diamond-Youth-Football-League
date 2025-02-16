@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { TeamStats } from "@/app/fixtures/types";
 import { getTeams, deleteTeam } from "@/lib/api";
 import TeamDialog from "./TeamDialog";
@@ -24,11 +24,8 @@ export default function TeamsManager({ category }: TeamsManagerProps) {
   const [selectedTeam, setSelectedTeam] = useState<TeamStats | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  useEffect(() => {
-    loadTeams();
-  }, [category]);
-
-  const loadTeams = async () => {
+  // Move loadTeams into useCallback to memoize it
+  const loadTeams = useCallback(async () => {
     try {
       const data = await getTeams(category);
       setTeams(data);
@@ -37,7 +34,11 @@ export default function TeamsManager({ category }: TeamsManagerProps) {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [category]); // category is the only dependency
+
+  useEffect(() => {
+    loadTeams();
+  }, [loadTeams]); // Now we can safely add loadTeams as a dependency
 
   const handleEdit = (team: TeamStats) => {
     setSelectedTeam(team);
@@ -51,6 +52,7 @@ export default function TeamsManager({ category }: TeamsManagerProps) {
         await loadTeams();
       } catch (error) {
         console.error('Error deleting team:', error);
+        alert('Failed to delete team. Please try again.');
       }
     }
   };

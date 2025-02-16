@@ -1,16 +1,13 @@
+import type { Match } from '@/lib/api';  // Import Match as a type
+
+// Re-export Match as a type
+export type { Match };  // Use 'export type' for re-exporting types
+
 export interface FixtureData {
     _id?: string;
     date: string;
-    matches: Match[];
+    matches: Match[];  // Now Match is properly imported and can be used
     category: 'U12' | 'U15';
-}
-
-export interface Match {
-    time: string;
-    team1: string;
-    score1: string | number;
-    team2: string;
-    score2: string | number;
 }
 
 export interface TeamStats {

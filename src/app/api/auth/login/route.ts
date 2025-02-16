@@ -14,6 +14,9 @@ export async function POST(request: Request) {
       { status: 401 }
     );
   } catch (error) {
+    // Log the error for debugging while keeping the response generic
+    console.error('Login error:', error);
+    
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

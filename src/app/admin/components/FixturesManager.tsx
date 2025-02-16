@@ -9,8 +9,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useEffect, useState } from "react";
-import { FixtureData } from "@/app/fixtures/types";
+import { useEffect, useState, useCallback } from "react";
+import { Fixture } from "@/lib/api";
 import { getFixtures, deleteFixture } from "@/lib/api";
 import FixtureDialog from "./FixtureDialog";
 
@@ -19,13 +19,13 @@ interface FixturesManagerProps {
 }
 
 export default function FixturesManager({ category }: FixturesManagerProps) {
-  const [fixtures, setFixtures] = useState<FixtureData[]>([]);
+  const [fixtures, setFixtures] = useState<Fixture[]>([]);
   const [, setIsLoading] = useState(true);
-  const [selectedFixture, setSelectedFixture] = useState<FixtureData | null>(null);
+  const [selectedFixture, setSelectedFixture] = useState<Fixture | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // Add sorting function
-  const sortFixtures = (fixtures: FixtureData[]) => {
+  const sortFixtures = (fixtures: Fixture[]) => {
     const months: { [key: string]: number } = {
       'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
       'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
@@ -48,23 +48,23 @@ export default function FixturesManager({ category }: FixturesManagerProps) {
     });
   };
 
-  useEffect(() => {
-    loadFixtures();
-  }, [category]);
-
-  const loadFixtures = async () => {
+  // Move loadFixtures into useCallback to memoize it
+  const loadFixtures = useCallback(async () => {
     try {
       const data = await getFixtures(category);
-      // Sort fixtures before setting state
       setFixtures(sortFixtures(data));
     } catch (error) {
       console.error('Error loading fixtures:', error);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [category]); // category is the only dependency
 
-  const handleEdit = (fixture: FixtureData) => {
+  useEffect(() => {
+    loadFixtures();
+  }, [loadFixtures]); // Now we can safely add loadFixtures as a dependency
+
+  const handleEdit = (fixture: Fixture) => {
     setSelectedFixture(fixture);
     setIsDialogOpen(true);
   };
@@ -76,6 +76,7 @@ export default function FixturesManager({ category }: FixturesManagerProps) {
         await loadFixtures();
       } catch (error) {
         console.error('Error deleting fixture:', error);
+        alert('Failed to delete fixture. Please try again.');
       }
     }
   };

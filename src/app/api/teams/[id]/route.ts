@@ -14,19 +14,39 @@ export async function PUT(
       runValidators: true,
     });
     return NextResponse.json(updatedTeam);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Failed to update team' }, { status: 500 });
   }
 }
 
 export async function DELETE(
+  request: Request,
   { params }: { params: { id: string } }
 ) {
   try {
     await connectToDatabase();
+    
+    // Check if the team exists first
+    const team = await Team.findById(params.id);
+    if (!team) {
+      return NextResponse.json(
+        { error: 'Team not found' },
+        { status: 404 }
+      );
+    }
+
+    // Delete the team
     await Team.findByIdAndDelete(params.id);
-    return NextResponse.json({ message: 'Team deleted successfully' });
+    
+    return NextResponse.json(
+      { message: 'Team deleted successfully' },
+      { status: 200 }
+    );
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to delete team' }, { status: 500 });
+    console.error('Error deleting team:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete team' },
+      { status: 500 }
+    );
   }
 } 

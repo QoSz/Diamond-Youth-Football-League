@@ -9,13 +9,13 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useState, useEffect } from "react";
-import { TeamStats } from "@/app/fixtures/types";
+import { Team } from "@/lib/api";
 import { createTeam, updateTeam } from "@/lib/api";
 
 interface TeamDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  team: TeamStats | null;
+  team: Team | null;
   category: 'U12' | 'U15';
   onSuccess: () => void;
 }
@@ -27,7 +27,7 @@ export default function TeamDialog({
   category,
   onSuccess,
 }: TeamDialogProps) {
-  const [formData, setFormData] = useState<TeamStats>(() => {
+  const [formData, setFormData] = useState<Team>(() => {
     if (team) {
       return { ...team };
     }
@@ -91,7 +91,7 @@ export default function TeamDialog({
     }
   };
 
-  const handleChange = (field: keyof TeamStats, value: string) => {
+  const handleChange = (field: keyof Team, value: string) => {
     const numValue = field === 'teamName' ? value : parseInt(value) || 0;
     setFormData({ ...formData, [field]: numValue });
   };
