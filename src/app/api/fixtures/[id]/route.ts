@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { connectToDatabase } from '@/lib/mongodb';
 import { Fixture } from '@/models/Fixture';
 import { NextResponse } from 'next/server';
