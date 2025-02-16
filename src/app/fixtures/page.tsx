@@ -6,10 +6,11 @@ import { fixturesDataU15 } from './fixturesDataU15';
 import { leagueDataU12 } from './leagueDataU12';
 import { leagueDataU15 } from './leagueDataU15';
 import { fixturesDataU12 } from './fixturesDataU12';
+import { FixtureData } from './types';
 
 export default function Fixtures() {
     // Sort fixtures by date
-    const sortFixtures = (fixtures: any[]) => {
+    const sortFixtures = (fixtures: FixtureData[]): FixtureData[] => {
         const months: { [key: string]: number } = {
             'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
             'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
