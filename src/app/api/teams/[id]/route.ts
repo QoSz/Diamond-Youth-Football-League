@@ -22,20 +22,16 @@ export async function PUT(
     }
 }
 
-// Define a proper type for the route's parameters
-interface RouteParams {
-  params: { id: string };
-}
-
 export async function DELETE(
     request: NextRequest,
-    { params }: RouteParams
+    { params }: { params: Promise<{ id: string }> }
 ) {
+    const { id } = await params;
     try {
         await connectToDatabase();
 
         // Check if the team exists first
-        const team = await Team.findById(params.id);
+        const team = await Team.findById(id);
         if (!team) {
             return NextResponse.json(
                 { error: 'Team not found' },
@@ -44,7 +40,7 @@ export async function DELETE(
         }
 
         // Delete the team
-        await Team.findByIdAndDelete(params.id);
+        await Team.findByIdAndDelete(id);
 
         return NextResponse.json(
             { message: 'Team deleted successfully' },
