@@ -2,6 +2,9 @@ import { connectToDatabase } from '@/lib/mongodb';
 import { Fixture } from '@/models/Fixture';
 import { NextResponse } from 'next/server';
 
+// Force dynamic rendering of this route
+export const dynamic = 'force-dynamic';
+
 // GET all fixtures by category
 export async function GET(request: Request) {
   try {
