@@ -12,19 +12,19 @@ interface Cached {
   promise: Promise<typeof mongoose> | null;
 }
 
-// Declare mongooseCache as a property on the global object
+// Properly declare the global type augmentation
 declare global {
-  let mongooseCache: Cached | undefined;
+  // eslint-disable-next-line no-var
+  var mongooseCache: Cached | undefined;
 }
 
-// Use NodeJS.Global type to properly type the global object
-const cached: Cached = (global as any).mongooseCache ?? {
+const cached: Cached = global.mongooseCache ?? {
   conn: null,
   promise: null,
 };
 
-if (!(global as any).mongooseCache) {
-  (global as any).mongooseCache = cached;
+if (!global.mongooseCache) {
+  global.mongooseCache = cached;
 }
 
 export async function connectToDatabase() {

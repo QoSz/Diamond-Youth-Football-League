@@ -14,7 +14,8 @@ export async function PUT(
       runValidators: true,
     });
     return NextResponse.json(updatedFixture);
-  } catch (_error) {
+  } catch (error) {
+    console.error('Error updating fixture:', error);
     return NextResponse.json({ error: 'Failed to update fixture' }, { status: 500 });
   }
 }

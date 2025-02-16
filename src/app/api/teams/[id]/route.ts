@@ -14,7 +14,8 @@ export async function PUT(
       runValidators: true,
     });
     return NextResponse.json(updatedTeam);
-  } catch (_error) {
+  } catch (error) {
+    console.error('Error updating team:', error);
     return NextResponse.json({ error: 'Failed to update team' }, { status: 500 });
   }
 }
