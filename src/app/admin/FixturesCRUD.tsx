@@ -252,7 +252,7 @@ export default function FixturesCRUD({ category }: FixturesCRUDProps) {
 
       toast.success('Match deleted', { id: toastId });
     } catch (error) {
-      toast.error('Delete failed', { id: toastId });
+      toast.error(`Delete failed: ${error instanceof Error ? error.message : 'Unknown error'}`, { id: toastId });
       fetchFixtures();
     }
   };
