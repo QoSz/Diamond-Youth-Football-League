@@ -10,7 +10,7 @@ export default function LeagueValue() {
       <div className="container mx-auto px-4 relative">
         {/* Main Question - removed underline */}
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-black relative inline-block">
-          <span className="relative z-10">
+          <span className="relative z-10 text-center">
             Tired of poorly organized leagues hindering your team&apos;s progress?
           </span>
         </h2>

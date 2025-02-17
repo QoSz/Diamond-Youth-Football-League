@@ -5,11 +5,15 @@ interface DesktopFixturesProps {
 }
 
 export default function DesktopFixtures({ matches }: DesktopFixturesProps) {
-    const getScoreColor = (score1: string | number, score2: string | number) => {
-        // Handle cases where scores might be strings like "3(2)"
-        const parseScore = (score: string | number) => {
+    const getScoreColor = (score1: string | number | null | undefined, score2: string | number | null | undefined) => {
+        // Skip coloring if either score is "-" or null/undefined
+        if (score1 === '-' || score2 === '-' || !score1 || !score2) return 'text-gray-800';
+
+        // Handle null/undefined scores and string/number conversion
+        const parseScore = (score: string | number | null | undefined) => {
+            if (score === null || score === undefined || score === '-') return 0;
             if (typeof score === 'string') {
-                return parseInt(score.split('(')[0]);
+                return parseInt(score.split('(')[0]) || 0;
             }
             return score;
         };
@@ -17,7 +21,7 @@ export default function DesktopFixtures({ matches }: DesktopFixturesProps) {
         const s1 = parseScore(score1);
         const s2 = parseScore(score2);
 
-        if (s1 === s2 || score1 === '-' || score2 === '-') return 'text-gray-800';
+        if (s1 === s2) return 'text-gray-800';
         return s1 > s2 ? 'text-[#006400]' : 'text-[#FF0000]';
     };
 

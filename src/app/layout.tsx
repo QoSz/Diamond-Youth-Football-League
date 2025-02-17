@@ -1,30 +1,45 @@
-import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/shared/navigation/Navigation";
 import Footer from "@/components/shared/footer/Footer";
+import Providers from '@/components/Providers';
+import { Toaster } from 'react-hot-toast';
 
 const roboto = Roboto({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Diamond Youth Football League",
   description: "Welcome to the Diamond Youth Football League. Elevating youth football.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={`${roboto.className} antialiased flex flex-col min-h-screen`}>
-        <Navigation />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <Providers>
+          <Navigation />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <Toaster 
+            position="top-right"
+            toastOptions={{
+              className: 'font-sans text-sm',
+              success: {
+                iconTheme: {
+                  primary: '#FF4500',
+                  secondary: 'white',
+                },
+              },
+            }}
+          />
+        </Providers>
       </body>
     </html>
   );

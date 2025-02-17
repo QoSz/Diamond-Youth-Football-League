@@ -1,15 +1,60 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import DesktopFixtures from './DesktopFixtures';
 import MobileFixtures from './MobileFixtures';
 import PlayoffStructure from './PlayoffStructure';
 import LeagueTable from './LeagueTable';
-import { fixturesDataU15 } from './fixturesDataU15';
-import { leagueDataU12 } from './leagueDataU12';
-import { leagueDataU15 } from './leagueDataU15';
-import { fixturesDataU12 } from './fixturesDataU12';
-import { FixtureData } from './types';
+import { FixtureData, LeagueData } from '@/services/dbService';
 
 export default function Fixtures() {
-    // Sort fixtures by date
+    const [u12Fixtures, setU12Fixtures] = useState<FixtureData[]>([]);
+    const [u15Fixtures, setU15Fixtures] = useState<FixtureData[]>([]);
+    const [u12League, setU12League] = useState<LeagueData[]>([]);
+    const [u15League, setU15League] = useState<LeagueData[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const fetchData = async () => {
+        try {
+            setLoading(true);
+            setError(null);
+
+            const [fixturesU12, fixturesU15, leagueU12, leagueU15] = await Promise.all([
+                fetch('/api/fixtures/u12').then(res => {
+                    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                    return res.json();
+                }),
+                fetch('/api/fixtures/u15').then(res => {
+                    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                    return res.json();
+                }),
+                fetch('/api/league/u12').then(res => {
+                    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                    return res.json();
+                }),
+                fetch('/api/league/u15').then(res => {
+                    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                    return res.json();
+                })
+            ]);
+
+            setU12Fixtures(sortFixtures(fixturesU12));
+            setU15Fixtures(sortFixtures(fixturesU15));
+            setU12League(leagueU12);
+            setU15League(leagueU15);
+        } catch (err) {
+            console.error('Error fetching data:', err);
+            setError('Failed to load data. Please try refreshing the page.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
     const sortFixtures = (fixtures: FixtureData[]): FixtureData[] => {
         const months: { [key: string]: number } = {
             'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
@@ -17,24 +62,33 @@ export default function Fixtures() {
         };
 
         return [...fixtures].sort((a, b) => {
-            const [dayA, monthA] = a.date.split(' ');
-            const [dayB, monthB] = b.date.split(' ');
+            const dayA = parseInt(a.date.split(/[a-z]/)[0]);
+            const dayB = parseInt(b.date.split(/[a-z]/)[0]);
             
-            const dayNumA = parseInt(dayA.replace(/\D/g, ''));
-            const dayNumB = parseInt(dayB.replace(/\D/g, ''));
+            const monthA = months[a.date.split(' ')[1]];
+            const monthB = months[b.date.split(' ')[1]];
             
-            const monthNumA = months[monthA];
-            const monthNumB = months[monthB];
-            
-            if (monthNumA !== monthNumB) {
-                return monthNumA - monthNumB;
+            if (monthA !== monthB) {
+                return monthA - monthB;
             }
-            return dayNumA - dayNumB;
-        });
+            return dayA - dayB;
+        }).map(fixture => ({
+            ...fixture,
+            matches: fixture.matches.map(match => ({
+                ...match,
+                score1: match.score1 ?? '-',
+                score2: match.score2 ?? '-'
+            }))
+        }));
     };
 
-    const sortedU12Fixtures = sortFixtures(fixturesDataU12);
-    const sortedU15Fixtures = sortFixtures(fixturesDataU15);
+    if (loading) {
+        return <div className="text-center py-8">Loading fixtures...</div>;
+    }
+
+    if (error) {
+        return <div className="text-center py-8 text-red-500">{error}</div>;
+    }
 
     return (
         <main className="relative min-h-screen bg-gradient-to-br from-white via-orange-50 to-white animate-gradient-shift">
@@ -77,7 +131,7 @@ export default function Fixtures() {
                         Fixtures
                     </h2>
                     <div className="space-y-10">
-                        {sortedU12Fixtures.map((fixture, index) => (
+                        {u12Fixtures.map((fixture, index) => (
                             <div key={index} className="flex flex-col md:flex-row gap-4 items-start md:items-center">
                                 <div className="w-full md:w-48 text-center">
                                     <div className="bg-gradient-to-r from-[#FF4500] to-[#FF6B00] rounded-full py-2 px-4 inline-block">
@@ -85,13 +139,21 @@ export default function Fixtures() {
                                     </div>
                                 </div>
                                 <div className="flex-1 w-full">
-                                    <DesktopFixtures matches={fixture.matches} />
-                                    <MobileFixtures matches={fixture.matches} />
+                                    <DesktopFixtures matches={fixture.matches.map(m => ({
+                                        ...m,
+                                        score1: m.score1 ?? null,
+                                        score2: m.score2 ?? null
+                                    }))} />
+                                    <MobileFixtures matches={fixture.matches.map(m => ({
+                                        ...m,
+                                        score1: m.score1 ?? null,
+                                        score2: m.score2 ?? null
+                                    }))} />
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <LeagueTable data={leagueDataU12} />
+                    <LeagueTable data={u12League} />
                     <PlayoffStructure />
                 </section>
 
@@ -133,7 +195,7 @@ export default function Fixtures() {
                         Fixtures
                     </h2>
                     <div className="space-y-10">
-                        {sortedU15Fixtures.map((fixture, index) => (
+                        {u15Fixtures.map((fixture, index) => (
                             <div key={index} className="flex flex-col md:flex-row gap-4 items-start md:items-center">
                                 <div className="w-full md:w-48 text-center">
                                     <div className="bg-gradient-to-r from-[#FF4500] to-[#FF6B00] rounded-full py-2 px-4 inline-block">
@@ -141,13 +203,21 @@ export default function Fixtures() {
                                     </div>
                                 </div>
                                 <div className="flex-1 w-full">
-                                    <DesktopFixtures matches={fixture.matches} />
-                                    <MobileFixtures matches={fixture.matches} />
+                                    <DesktopFixtures matches={fixture.matches.map(m => ({
+                                        ...m,
+                                        score1: m.score1 ?? null,
+                                        score2: m.score2 ?? null
+                                    }))} />
+                                    <MobileFixtures matches={fixture.matches.map(m => ({
+                                        ...m,
+                                        score1: m.score1 ?? null,
+                                        score2: m.score2 ?? null
+                                    }))} />
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <LeagueTable data={leagueDataU15} />
+                    <LeagueTable data={u15League} />
                 </section>
             </div>
         </main>

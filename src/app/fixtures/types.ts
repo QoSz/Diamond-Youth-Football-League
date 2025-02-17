@@ -1,19 +1,23 @@
 export interface Match {
+    _id: string;
     time: string;
     team1: string;
     team2: string;
-    score1: string | number;
-    score2: string | number;
+    score1: string | number | null;
+    score2: string | number | null;
 }
 
 export interface FixtureData {
+    _id?: string;
     date: string;
     category: 'U12' | 'U15';
     matches: Match[];
 }
 
 export interface TeamStats {
+    _id?: string;
     teamName: string;
+    category: 'U12' | 'U15';
     matchesPlayed: number;
     won: number;
     drawn: number;
@@ -23,7 +27,6 @@ export interface TeamStats {
     goalDifference: number;
     bonusPoints: number;
     totalPoints: number;
-    category: 'U12' | 'U15';
 }
 
 export interface PlayoffMatch {
