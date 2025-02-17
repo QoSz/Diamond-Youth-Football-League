@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import DesktopFixtures from './DesktopFixtures';
 import MobileFixtures from './MobileFixtures';
 import PlayoffStructure from './PlayoffStructure';
@@ -15,7 +15,7 @@ export default function Fixtures() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         try {
             setLoading(true);
             setError(null);
@@ -49,11 +49,11 @@ export default function Fixtures() {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [fetchData]);
 
     const sortFixtures = (fixtures: FixtureData[]): FixtureData[] => {
         const months: { [key: string]: number } = {

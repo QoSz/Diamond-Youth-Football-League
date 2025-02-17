@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Input } from '@/components/ui/input';
@@ -35,19 +35,35 @@ interface FixtureData {
   matches: Match[];
 }
 
+interface NewMatch {
+  time: string;
+  team1: string;
+  team2: string;
+  score1: number | null;
+  score2: number | null;
+}
+
+interface MatchInput {
+  time: string;
+  team1: string;
+  team2: string;
+  score1: string;
+  score2: string;
+}
+
 export default function FixturesCRUD({ category }: FixturesCRUDProps) {
   const [fixtures, setFixtures] = useState<FixtureData[]>([]);
   const [editingMatch, setEditingMatch] = useState<EditingMatch | null>(null);
 
-  const fetchFixtures = async () => {
+  const fetchFixtures = useCallback(async () => {
     const res = await fetch(`/api/admin/fixtures?category=${category}`);
     const data = await res.json();
     setFixtures(sortFixtures(data));
-  };
+  }, [category]);
 
   useEffect(() => {
     fetchFixtures();
-  }, [category]);
+  }, [category, fetchFixtures]);
 
   const sortFixtures = (fixtures: FixtureData[]) => {
     const months: { [key: string]: number } = {
@@ -72,9 +88,18 @@ export default function FixturesCRUD({ category }: FixturesCRUDProps) {
     });
   };
 
-  const handleAddFixture = async (date: string, matches: any[]) => {
+  const handleAddFixture = async (date: string, matches: MatchInput[]) => {
     const toastId = toast.loading('Saving fixture...');
     try {
+      // Convert MatchInput[] to NewMatch[] by parsing the scores
+      const convertedMatches: NewMatch[] = matches.map(m => ({
+        time: m.time,
+        team1: m.team1,
+        team2: m.team2,
+        score1: m.score1 ? parseInt(m.score1) : null,
+        score2: m.score2 ? parseInt(m.score2) : null
+      }));
+
       // Check if we're adding to an existing fixture
       const existing = fixtures.find(f => f.date === date && f.category === category);
       
@@ -82,13 +107,7 @@ export default function FixturesCRUD({ category }: FixturesCRUDProps) {
         // Optimistic update for existing fixture
         const updatedFixture = {
           ...existing,
-          matches: [...existing.matches, ...matches.map(m => ({
-            time: m.time,
-            team1: m.team1,
-            team2: m.team2,
-            score1: m.score1 || null,
-            score2: m.score2 || null
-          }))]
+          matches: [...existing.matches, ...convertedMatches]
         };
 
         setFixtures(current => sortFixtures(
@@ -97,16 +116,10 @@ export default function FixturesCRUD({ category }: FixturesCRUDProps) {
       } else {
         // Optimistically add the new fixture with a temporary ID
         const newFixture = {
-          _id: `temp-${Date.now()}`, // Add temporary unique ID
+          _id: `temp-${Date.now()}`,
           date,
           category,
-          matches: matches.map(m => ({
-            time: m.time,
-            team1: m.team1,
-            team2: m.team2,
-            score1: m.score1 || null,
-            score2: m.score2 || null
-          }))
+          matches: convertedMatches
         };
 
         setFixtures(currentFixtures => sortFixtures([...currentFixtures, newFixture]));
@@ -115,7 +128,7 @@ export default function FixturesCRUD({ category }: FixturesCRUDProps) {
       const response = await fetch('/api/admin/fixtures', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ date, category, matches })
+        body: JSON.stringify({ date, category, matches: convertedMatches })
       });
 
       if (!response.ok) {
@@ -244,7 +257,7 @@ export default function FixturesCRUD({ category }: FixturesCRUDProps) {
     }
   };
 
-  const handleAddMatchToFixture = async (fixtureDate: string, matches: any[]) => {
+  const handleAddMatchToFixture = async (fixtureDate: string, matches: NewMatch[]) => {
     try {
       // Optimistic update
       setFixtures(current => 
@@ -282,7 +295,7 @@ export default function FixturesCRUD({ category }: FixturesCRUDProps) {
     } catch (error) {
       console.error('Error adding match:', error);
       fetchFixtures();
-      alert('Failed to add match. Please try again.');
+      toast.error('Failed to add match. Please try again.');
     }
   };
 
@@ -308,7 +321,8 @@ export default function FixturesCRUD({ category }: FixturesCRUDProps) {
 
       toast.success('Fixture deleted', { id: toastId });
     } catch (error) {
-      toast.error('Delete failed', { id: toastId });
+      console.error('Error deleting fixture:', error);
+      toast.error('Delete failed');
       fetchFixtures(); // Revert to server state
     }
   };

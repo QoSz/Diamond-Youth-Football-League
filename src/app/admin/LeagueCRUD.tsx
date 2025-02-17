@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Input } from '@/components/ui/input';
@@ -20,15 +20,15 @@ export default function LeagueCRUD({ category }: LeagueCRUDProps) {
   const [teams, setTeams] = useState<(TeamStats & { _id: string })[]>([]);
   const [editingTeam, setEditingTeam] = useState<EditingTeam | null>(null);
 
-  const fetchTeams = async () => {
+  const fetchTeams = useCallback(async () => {
     const res = await fetch(`/api/admin/league?category=${category}`);
     const data = await res.json();
     setTeams(data);
-  };
+  }, [category]);
 
   useEffect(() => {
     fetchTeams();
-  }, [category]);
+  }, [category, fetchTeams]);
 
   const handleAddTeam = () => {
     const newTeam: EditingTeam = {
@@ -115,7 +115,7 @@ export default function LeagueCRUD({ category }: LeagueCRUDProps) {
     } catch (error) {
       // Revert to previous state if the deletion fails
       setTeams(previousTeams);
-      toast.error('Delete failed', { id: toastId });
+      toast.error(`Delete failed: ${error instanceof Error ? error.message : 'Unknown error'}`, { id: toastId });
     }
   };
 

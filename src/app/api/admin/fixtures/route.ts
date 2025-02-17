@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     await dbConnect();
 
     // Format matches to handle empty scores
-    const formattedMatches = matches.map((match: any) => ({
+    const formattedMatches = matches.map((match: Match) => ({
       ...match,
       score1: match.score1 === '' ? '-' : match.score1,
       score2: match.score2 === '' ? '-' : match.score2
@@ -40,7 +40,7 @@ export async function POST(request: Request) {
     
     if (existingFixture) {
       // Filter out duplicate matches
-      const newMatches = formattedMatches.filter((newMatch: any) => 
+      const newMatches = formattedMatches.filter((newMatch: Match) => 
         !existingFixture.matches.some((existingMatch: Match) => 
           existingMatch.team1 === newMatch.team1 && 
           existingMatch.team2 === newMatch.team2 &&

@@ -14,6 +14,7 @@ interface GlobalMongoose {
 
 // Declare the mongoose property on global
 declare global {
+  // eslint-disable-next-line no-var
   var mongoose: GlobalMongoose | undefined;
 }
 

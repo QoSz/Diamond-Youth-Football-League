@@ -12,18 +12,27 @@ import { Input } from '@/components/ui/input';
 import { Plus, Trash2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
-interface AddMatchDialogProps {
-  category: 'U12' | 'U15';
-  fixtureDate: string;
-  onAdd: (matches: any[]) => void;
-}
-
 interface MatchInput {
   time: string;
   team1: string;
   team2: string;
   score1: string;
   score2: string;
+}
+
+// Add new interface for processed matches
+interface ProcessedMatch {
+  time: string;
+  team1: string;
+  team2: string;
+  score1: number | null;
+  score2: number | null;
+}
+
+interface AddMatchDialogProps {
+  category: 'U12' | 'U15';
+  fixtureDate: string;
+  onAdd: (matches: ProcessedMatch[]) => void;
 }
 
 export default function AddMatchDialog({ fixtureDate, onAdd }: AddMatchDialogProps) {
@@ -51,7 +60,7 @@ export default function AddMatchDialog({ fixtureDate, onAdd }: AddMatchDialogPro
       onAdd(processedMatches);
       setMatches([{ time: '', team1: '', team2: '', score1: '', score2: '' }]);
       toast.success('Match added successfully');
-    } catch (error) {
+    } catch {
       toast.error('Failed to save match');
     }
     setOpen(false);
