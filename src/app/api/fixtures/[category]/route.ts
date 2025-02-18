@@ -4,13 +4,12 @@ import dbConnect from '@/lib/db';
 
 export async function GET(
   request: Request,
-  context: { params: { category: string } }
+  { params }: { params: { category: string } }
 ) {
   console.log('=== Fixtures API Request ===');
   console.log('Request URL:', request.url);
   
-  // Safely destructure and await params
-  const params = await context.params;
+  // Directly access params without await (params is synchronous in Next 14/15)
   const { category } = params;
   
   console.log('Category parameter:', category);
