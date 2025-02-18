@@ -4,14 +4,13 @@ import dbConnect from '@/lib/db';
 
 export async function GET(
   request: Request,
-  context: { params: { category: string } }
+  { params }: { params: Promise<{ category: string }> }
 ) {
   console.log('=== League API Request ===');
   console.log('Request URL:', request.url);
   
-  // Safely destructure and await params
-  const params = await context.params;
-  const { category } = params;
+  // Await params since in Next.js 15, route parameters are asynchronous
+  const { category } = await params;
   
   console.log('Category parameter:', category);
 
