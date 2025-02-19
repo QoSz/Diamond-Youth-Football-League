@@ -5,31 +5,23 @@ import Image from 'next/image';
 export default function About() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-white">
-      {/* Background Image Section */}
-      <div className="relative w-full h-[200px]">
-        <Image
-          src="/images/About-Us.png"
-          alt="Football field background"
-          fill
-          className="object-cover pb-8"
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent">
-            About Us
-          </h1>
-        </div>
+      {/* Updated Title Section without background image */}
+      <div className="w-full pt-8 pb-0">
+        <h1 className="text-4xl md:text-5xl font-bold text-center bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent">
+          About Us
+        </h1>
       </div>
 
       {/* Mission Statement */}
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <p className="text-xl text-justify text-gray-800 leading-relaxed">
-            Every young footballer deserves a fair chance to shine on the field, yet far too many
-            budding football stars find themselves frustrated by poorly organized leagues that
-            leave them feeling defeated before the game even begins. Just like you, we faced
-            the same challenges endless delays, inadequate playing time, inconsistent
-            refereeing and age cheating. We needed a better league for their children a league
-            that would offer not just matches, but meaningful, competitive experiences.
+            Every young footballer deserves a fair chance to shine on the field, yet far too many budding
+            football stars find themselves frustrated by poorly organized leagues that leave them feeling
+            defeated before the game even begins. Just like you, we faced the same challenges endless
+            delays, inadequate playing time, inconsistent refereeing and age cheating. We needed a better
+            league for their children a league that would offer not just matches, but meaningful, competitive
+            experiences.
           </p>
         </div>
       </section>
@@ -99,19 +91,18 @@ export default function About() {
       <section className="py-8 pb-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-[1.618rem] p-8 shadow-xl border border-orange-100 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent">
-              Join Our League
+            <h2 className="text-2xl bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent font-bold mb-10 text-black">
+              Escape The Chaos of Unorganized Competitions
             </h2>
-            <p className="text-xl text-gray-800 mb-8">
-              If you want to escape the chaos of disorganized competitions – join our league. 
-              Give your young players the competitive experiences they deserve.
-            </p>
             <button className="px-8 py-4 rounded-[1.618rem] bg-gradient-to-r from-[#FF4500] to-[#FF6B00] 
-                           text-white font-semibold text-lg shadow-lg hover:shadow-xl 
+                           text-white font-semibold text-xl shadow-lg hover:shadow-xl block mx-auto mb-8
                            hover:from-[#FF2200] hover:to-[#FF4500] transition-all duration-300 
                            hover:scale-105">
-              Register Your Team Now
+              Join Our League
             </button>
+            <p className="text-xl text-black mb-4">
+              Provide your young athletes with the competitive experiences they deserve.
+            </p>
           </div>
         </div>
       </section>

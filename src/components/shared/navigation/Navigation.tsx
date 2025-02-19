@@ -26,6 +26,13 @@ export default function Navigation() {
         {/* Desktop Navigation */}
         <div className="hidden flex-1 items-center justify-end space-x-4 md:flex md:space-x-6">
           <Link
+            href="/"
+            className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80"
+          >
+            <Home className="h-4 w-4" />
+            <span>Home</span>
+          </Link>
+          <Link
             href="/about"
             className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80"
           >
@@ -34,11 +41,11 @@ export default function Navigation() {
           </Link>
           
           <Link
-            href="/services"
+            href="/leagues"
             className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80"
           >
-            <Image src="/football.svg" alt="Services" width={16} height={16} />
-            <span>Services</span>
+            <Image src="/football.svg" alt="Leagues" width={16} height={16} />
+            <span>Leagues</span>
           </Link>
 
           <Button
@@ -123,7 +130,7 @@ export default function Navigation() {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <User className="h-4 w-4" />
-            <span>About</span>
+            <span>About Us</span>
           </Link>
 
           <Link
@@ -131,8 +138,8 @@ export default function Navigation() {
             className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80 py-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <Image src="/football.svg" alt="Services" width={16} height={16} />
-            <span>Services</span>
+            <Image src="/football.svg" alt="Leagues" width={16} height={16} />
+            <span>Leagues</span>
           </Link>
 
           <Button

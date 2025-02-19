@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CheckCircle2, XCircle, CalendarCheck, Users, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, XCircle, CalendarCheck, Users, ShieldCheck, AlertTriangle, Clock, ShieldOff, Eye, ClipboardList, Trophy } from 'lucide-react';
 
 export default function LeagueValue() {
   return (
@@ -21,18 +21,23 @@ export default function LeagueValue() {
             Avoid the Frustration of Poorly Run Leagues:
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {["Chaotic league organization creates confusion.",
-              "Last-minute scheduling changes frustrate teams.",
-              "Insufficient game time limits player development.",
-              "Age cheating ruins fair play integrity.",
-              "Inconsistent refereeing compromises safety."
+            {[
+              "Poorly organized youth leagues lead to chaos and frustration",
+              "Insufficient game time limits player development",
+              "Age cheating undermines fair play and integrity"
             ].map((problem, index) => (
               <div key={index} 
-                className="flex items-center p-6 bg-gradient-to-br from-white to-red-50 rounded-[1.618rem] 
+                className="flex flex-col items-center p-6 bg-gradient-to-br from-white to-red-50 rounded-[1.618rem] 
                           border border-red-100 shadow-lg hover:shadow-2xl hover:scale-105 
-                          transition-all duration-300 group">
-                <XCircle className="w-9 h-9 text-red-500 mr-4 flex-shrink-0 stroke-[1.5] group-hover:rotate-12 transition-transform" />
-                <p className="text-gray-800 text-lg">{problem}</p>
+                          transition-all duration-300 group text-center">
+                <div className="mb-4">
+                  {[
+                    <AlertTriangle className="w-12 h-12 text-red-500 stroke-[1.5]" />,
+                    <Clock className="w-12 h-12 text-red-500 stroke-[1.5]" />,
+                    <ShieldOff className="w-12 h-12 text-red-500 stroke-[1.5]" />
+                  ][index]}
+                </div>
+                <p className="text-gray-800 text-lg font-medium">{problem}</p>
               </div>
             ))}
           </div>
@@ -43,47 +48,60 @@ export default function LeagueValue() {
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-400">
             Join a League That Values Consistency:
           </h3>
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
-              "Reliable match scheduling system",
-              "Maximum player development opportunities",
-              "Certified referees for fair play",
-              "Mandatory player ID verification"
+              "Experience smooth match scheduling every time",
+              "High frequency and high duration matches",
+              "Age verification and Player ID cards"
             ].map((benefit, index) => (
               <div key={index} 
-                className="flex items-center p-6 bg-gradient-to-br from-white to-green-50 rounded-[1.618rem] 
+                className="flex flex-col items-center p-6 bg-gradient-to-br from-white to-green-50 rounded-[1.618rem] 
                           border border-green-100 shadow-md hover:shadow-green-200/50 hover:scale-105
-                          transition-all duration-300 group">
-                <CheckCircle2 className="w-9 h-9 text-green-500 mr-4 flex-shrink-0 stroke-[1.5] group-hover:scale-110 transition-transform" />
+                          transition-all duration-300 group text-center">
+                <div className="mb-4">
+                  {[
+                    <CalendarCheck className="w-12 h-12 text-green-500 stroke-[1.5]" />,
+                    <CheckCircle2 className="w-12 h-12 text-green-500 stroke-[1.5]" />,
+                    <ShieldCheck className="w-12 h-12 text-green-500 stroke-[1.5]" />
+                  ][index]}
+                </div>
                 <p className="text-gray-800 text-lg font-medium">{benefit}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Steps Section - removed underline */}
+        <div className="text-center my-12">
+          <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF4500] to-[#FF8C00] mb-4">
+            With a successful first season, we prioritize quality gameplay.
+          </h3>
+          <p className="text-xl text-gray-700">
+            100% of teams reported a better experience than previous leagues.
+          </p>
+        </div>
+
         <div className="mb-16">
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
             <span className="relative">
-              3 Simple Steps to Success
+              3 Simple Steps to Join Us
             </span>
           </h3>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
               {
                 step: "1",
-                title: "Visit a live match",
-                icon: <div className="flex justify-center"><Users className="w-14 h-14 mb-4 text-[#ff6d00] stroke-[1.5]" /></div>
+                title: "Come See Our League in Action",
+                icon: <div className="flex justify-center"><Eye className="w-14 h-14 mb-4 text-[#ff6d00] stroke-[1.5]" /></div>
               },
               {
                 step: "2",
-                title: "Complete registration",
-                icon: <div className="flex justify-center"><CalendarCheck className="w-14 h-14 mb-4 text-[#ff6d00] stroke-[1.5]" /></div>
+                title: "Register Your Team",
+                icon: <div className="flex justify-center"><ClipboardList className="w-14 h-14 mb-4 text-[#ff6d00] stroke-[1.5]" /></div>
               },
               {
                 step: "3",
-                title: "Enjoy competitive play",
-                icon: <div className="flex justify-center"><ShieldCheck className="w-14 h-14 mb-4 text-[#ff6d00] stroke-[1.5]" /></div>
+                title: "Enjoy Competitive Games All Year Long",
+                icon: <div className="flex justify-center"><Trophy className="w-14 h-14 mb-4 text-[#ff6d00] stroke-[1.5]" /></div>
               }
             ].map((step, index) => (
               <div key={index} 
