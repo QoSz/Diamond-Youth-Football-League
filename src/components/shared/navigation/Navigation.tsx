@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Phone, User, Home } from "lucide-react";
+import { User, Home } from "lucide-react";
 import Link from "next/link";
 import Image from 'next/image';
 import { useState } from 'react';
