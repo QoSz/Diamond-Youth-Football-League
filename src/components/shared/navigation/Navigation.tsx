@@ -48,7 +48,7 @@ export default function Navigation() {
             <span>Leagues</span>
           </Link>
 
-          <Button
+          {/* <Button
             asChild
             variant="outline"
             className="border-[#ff4500] border-2 rounded-full transition-all duration-300 hover:scale-105"
@@ -60,7 +60,7 @@ export default function Navigation() {
               <Phone className="h-4 w-4 text-[#ff4500]" />
               <span>Contact Us</span>
             </Link>
-          </Button>
+          </Button> */}
         </div>
 
         {/* Mobile Navigation Toggle */}
@@ -142,7 +142,7 @@ export default function Navigation() {
             <span>Leagues</span>
           </Link>
 
-          <Button
+          {/* <Button
             asChild
             variant="outline"
             className="w-full border-[#ff4500] border-2 rounded-full transition-all duration-300 hover:scale-105"
@@ -155,7 +155,7 @@ export default function Navigation() {
               <Phone className="h-4 w-4 text-[#ff4500]" />
               <span>Contact Us</span>
             </Link>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </nav>
