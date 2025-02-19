@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CheckCircle2, XCircle, CalendarCheck, Users, ShieldCheck, AlertTriangle, Clock, ShieldOff, Eye, ClipboardList, Trophy } from 'lucide-react';
+import { CheckCircle2, CalendarCheck, ShieldCheck, AlertTriangle, Clock, ShieldOff, Eye, ClipboardList, Trophy } from 'lucide-react';
 
 export default function LeagueValue() {
   return (
@@ -32,9 +32,9 @@ export default function LeagueValue() {
                           transition-all duration-300 group text-center">
                 <div className="mb-4">
                   {[
-                    <AlertTriangle className="w-12 h-12 text-red-500 stroke-[1.5]" />,
-                    <Clock className="w-12 h-12 text-red-500 stroke-[1.5]" />,
-                    <ShieldOff className="w-12 h-12 text-red-500 stroke-[1.5]" />
+                    <AlertTriangle key="alert" className="w-12 h-12 text-red-500 stroke-[1.5]" />,
+                    <Clock key="clock" className="w-12 h-12 text-red-500 stroke-[1.5]" />,
+                    <ShieldOff key="shield" className="w-12 h-12 text-red-500 stroke-[1.5]" />
                   ][index]}
                 </div>
                 <p className="text-gray-800 text-lg font-medium">{problem}</p>
@@ -60,9 +60,9 @@ export default function LeagueValue() {
                           transition-all duration-300 group text-center">
                 <div className="mb-4">
                   {[
-                    <CalendarCheck className="w-12 h-12 text-green-500 stroke-[1.5]" />,
-                    <CheckCircle2 className="w-12 h-12 text-green-500 stroke-[1.5]" />,
-                    <ShieldCheck className="w-12 h-12 text-green-500 stroke-[1.5]" />
+                    <CalendarCheck key="calendar" className="w-12 h-12 text-green-500 stroke-[1.5]" />,
+                    <CheckCircle2 key="check" className="w-12 h-12 text-green-500 stroke-[1.5]" />,
+                    <ShieldCheck key="shield-check" className="w-12 h-12 text-green-500 stroke-[1.5]" />
                   ][index]}
                 </div>
                 <p className="text-gray-800 text-lg font-medium">{benefit}</p>

@@ -1,6 +1,4 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { CalendarRange, Trophy, ListOrdered, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 export default function Leagues() {
   return (
