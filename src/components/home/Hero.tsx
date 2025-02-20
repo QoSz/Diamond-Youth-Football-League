@@ -34,12 +34,6 @@ export default function Hero() {
                   />
                 </svg>
               </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center px-6 py-3 rounded-[1.618rem] border-2 border-[#FF4500] text-white font-semibold hover:bg-gradient-to-r hover:from-[#FF4500] hover:to-[#FF6B00] hover:border-transparent transition-all text-base sm:text-lg"
-              >
-                About Us
-              </Link>
             </div>
           </div>
 

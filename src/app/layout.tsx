@@ -1,13 +1,14 @@
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/shared/navigation/Navigation";
 import Footer from "@/components/shared/footer/Footer";
 import Providers from '@/components/Providers';
 import { Toaster } from 'react-hot-toast';
 
-const roboto = Roboto({
+const inter = Inter({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
+  display: 'swap',
 });
 
 export const metadata = {
@@ -22,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} antialiased flex flex-col min-h-screen`}>
+      <body className={`${inter.className} antialiased flex flex-col min-h-screen`}>
         <Providers>
           <Navigation />
           <main className="flex-1">{children}</main>

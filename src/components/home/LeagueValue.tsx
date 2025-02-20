@@ -125,20 +125,20 @@ export default function LeagueValue() {
             Your Frustration Ends Here
           </h3>
           <p className="text-xl text-gray-700 mb-8">
-            Experience the difference of professional league management.
+            Your journey to a better league experience starts now!
           </p>
-          <Link
+          <a
             href="tel:+254750920779"
             className="inline-flex items-center px-8 py-4 rounded-[1.618rem] bg-gradient-to-r from-[#FF4500] to-[#FF6B00] 
                      text-white font-semibold hover:from-[#FF2200] hover:to-[#FF4500] transition-all duration-300
-                     text-lg shadow-lg hover:shadow-xl hover:scale-105 animate-pulse-slow group"
+                     text-md shadow-lg hover:shadow-xl hover:scale-105 animate-pulse-slow group"
           >
             <Phone
               className="mr-2 w-4 h-4 transition-transform"
               fill="currentColor"
             />
             Claim Your Team&apos;s Spot Now
-          </Link>
+          </a>
         </div>
       </div>
     </section>

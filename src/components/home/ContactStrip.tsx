@@ -22,7 +22,7 @@ export default function ContactStrip() {
 
           {/* Social Media Section */}
           <div className="flex items-center gap-4">
-            <span className="text-orange-800 font-medium">Follow Our Socials:</span>
+            <span className="text-orange-800 font-medium">Follow Our Instagram:</span>
             <Link
               href="https://www.instagram.com/diamondyouthfootballleague/"
               target="_blank"
