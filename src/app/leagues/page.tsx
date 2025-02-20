@@ -164,6 +164,17 @@ export default function Leagues() {
           </div>
         </div>
 
+        {/* Add Football pitch image here */}
+        <div className="pt-12 pb-0 px-4 flex justify-center">
+          <div className="max-w-md mx-auto w-full">
+            <img 
+              src="/images/Football-Pitch.svg" 
+              alt="Football pitch diagram"
+              className="w-full h-auto rounded-[1.618rem] shadow-lg hover:shadow-xl transition-shadow duration-300"
+            />
+          </div>
+        </div>
+
         {/* Fixtures Link Section */}
         <div className="py-12 px-4 text-center">
           <div className="max-w-2xl mx-auto bg-orange-50 p-8 rounded-[1.618rem] border-2 border-orange-100">

@@ -1,17 +1,17 @@
 import Link from 'next/link';
-import { CheckCircle2, CalendarCheck, ShieldCheck, AlertTriangle, Clock, ShieldOff, Eye, ClipboardList, Trophy } from 'lucide-react';
+import { CheckCircle2, CalendarCheck, ShieldCheck, AlertTriangle, Clock, ShieldOff, Eye, ClipboardList, Trophy, Phone } from 'lucide-react';
 
 export default function LeagueValue() {
   return (
     <section className="py-16 relative overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-orange-50 to-white animate-gradient-shift"></div>
-      
+
       <div className="container mx-auto px-4 relative">
         {/* Main Question - removed underline */}
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-black relative inline-block">
           <span className="relative z-10 text-center">
-            Tired of poorly organized leagues hindering your team&apos;s progress?
+            Are you tired of poorly organized leagues hindering your team&apos;s progress?
           </span>
         </h2>
 
@@ -26,7 +26,7 @@ export default function LeagueValue() {
               "Insufficient game time limits player development",
               "Age cheating undermines fair play and integrity"
             ].map((problem, index) => (
-              <div key={index} 
+              <div key={index}
                 className="flex flex-col items-center p-6 bg-gradient-to-br from-white to-red-50 rounded-[1.618rem] 
                           border border-red-100 shadow-lg hover:shadow-2xl hover:scale-105 
                           transition-all duration-300 group text-center">
@@ -54,7 +54,7 @@ export default function LeagueValue() {
               "High frequency and high duration matches",
               "Age verification and Player ID cards"
             ].map((benefit, index) => (
-              <div key={index} 
+              <div key={index}
                 className="flex flex-col items-center p-6 bg-gradient-to-br from-white to-green-50 rounded-[1.618rem] 
                           border border-green-100 shadow-md hover:shadow-green-200/50 hover:scale-105
                           transition-all duration-300 group text-center">
@@ -104,7 +104,7 @@ export default function LeagueValue() {
                 icon: <div className="flex justify-center"><Trophy className="w-14 h-14 mb-4 text-[#ff6d00] stroke-[1.5]" /></div>
               }
             ].map((step, index) => (
-              <div key={index} 
+              <div key={index}
                 className="text-center p-8 bg-gradient-to-br from-white to-orange-50 rounded-[1.618rem] 
                           border border-orange-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 
                           transition-all duration-300 transform perspective-1000">
@@ -128,25 +128,16 @@ export default function LeagueValue() {
             Experience the difference of professional league management.
           </p>
           <Link
-            href="/contact"
+            href="tel:+254750920779"
             className="inline-flex items-center px-8 py-4 rounded-[1.618rem] bg-gradient-to-r from-[#FF4500] to-[#FF6B00] 
                      text-white font-semibold hover:from-[#FF2200] hover:to-[#FF4500] transition-all duration-300
                      text-lg shadow-lg hover:shadow-xl hover:scale-105 animate-pulse-slow group"
           >
+            <Phone
+              className="mr-2 w-4 h-4 transition-transform"
+              fill="currentColor"
+            />
             Claim Your Team&apos;s Spot Now
-            <svg
-              className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
           </Link>
         </div>
       </div>
