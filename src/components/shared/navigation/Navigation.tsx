@@ -134,7 +134,7 @@ export default function Navigation() {
           </Link>
 
           <Link
-            href="/services"
+            href="/leagues"
             className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80 py-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
