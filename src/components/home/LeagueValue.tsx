@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { CheckCircle2, CalendarCheck, ShieldCheck, AlertTriangle, Clock, ShieldOff, Eye, ClipboardList, Trophy, Phone } from 'lucide-react';
 
 export default function LeagueValue() {

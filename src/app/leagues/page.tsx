@@ -17,17 +17,18 @@ export default function Leagues() {
 
       {/* Image section added here */}
       <div className="py-4 px-4 max-w-4xl mx-auto w-full">
-        <div className="rounded-[1.618rem] overflow-hidden shadow-lg">
-          <img
+        <div className="rounded-[1.618rem] overflow-hidden shadow-lg relative h-[400px]">
+          <Image
             src="/images/IMG-20250213-WA0003.jpg"
             alt="Youth football league action"
-            className="w-full h-auto"
+            fill
+            className="object-cover"
           />
         </div>
       </div>
 
       {/* Age Group Notes - simplified container */}
-      <div className="py-4 px-4">
+      <div className="py-4 px-4 max-w-md mx-auto w-full">
         <div className="bg-[#FFE7C9] p-6 rounded-xl">
           <h3 className="text-xl text-center font-semibold text-[#FF4500] mb-2">
             Age Groups
@@ -164,18 +165,6 @@ export default function Leagues() {
               ))}
             </tbody>
           </table>
-        </div>
-      </div>
-
-      {/* New Image Section */}
-      <div className="py-4 px-4 max-w-4xl mx-auto w-full">
-        <div className="relative h-[400px] rounded-[1.618rem] overflow-hidden shadow-xl">
-          <Image
-            src="/images/Home-LeagueInfo.jpg"
-            alt="Youth football league structure"
-            fill
-            className="object-cover"
-          />
         </div>
       </div>
 
