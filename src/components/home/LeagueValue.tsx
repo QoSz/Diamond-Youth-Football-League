@@ -7,11 +7,8 @@ export default function LeagueValue() {
       <div className="absolute inset-0 bg-gradient-to-br from-white via-orange-50 to-white animate-gradient-shift"></div>
 
       <div className="container mx-auto px-4 relative">
-        {/* Main Question - removed underline */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-black relative inline-block">
-          <span className="relative z-10 text-center">
-            Are you tired of poorly organized leagues hindering your team&apos;s progress?
-          </span>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-black">
+          Are you tired of poorly organized leagues hindering your team&apos;s progress?
         </h2>
 
         {/* Problems Section - added gradient effect */}
