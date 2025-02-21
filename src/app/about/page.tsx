@@ -98,7 +98,7 @@ export default function About() {
       <section className="py-4 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-[1.618rem] p-8 shadow-xl border border-orange-100 text-center">
-            <h2 className="text-xl bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent mb-4">
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent mb-4">
               Provide your young athletes with the competitive experiences they deserve!
             </h2>
             <a
