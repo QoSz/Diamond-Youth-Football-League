@@ -16,7 +16,7 @@ export default function Hero() {
             </h1>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Link
-                href="/contact"
+                href="/leagues"
                 className="inline-flex items-center px-6 py-3 rounded-[1.618rem] bg-gradient-to-r from-[#FF4500] to-[#FF6B00] text-white font-semibold hover:opacity-90 transition-opacity text-base sm:text-lg"
               >
                 Join League
