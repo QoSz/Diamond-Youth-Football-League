@@ -130,8 +130,7 @@ export default function LeagueValue() {
                      text-md shadow-lg hover:shadow-xl hover:scale-105 animate-pulse-slow group"
           >
             <Phone
-              className="mr-2 w-4 h-4 transition-transform"
-              fill="currentColor"
+              className="mr-2 w-6 h-6 md:w-5 md:h-5 transition-transform"
             />
             Claim Your Team&apos;s Spot Now
           </a>

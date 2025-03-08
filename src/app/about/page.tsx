@@ -34,7 +34,7 @@ export default function About() {
             {/* Image Column */}
             <div className="relative h-[400px] rounded-[1.618rem] overflow-hidden shadow-xl">
               <Image
-                src="/images/Hero-Image.jpg"
+                src="/images/DYFL-Photos/dyfl-23.jpg"
                 alt="Youth football match in progress"
                 fill
                 className="object-cover"
@@ -43,16 +43,16 @@ export default function About() {
             
             {/* Text Column */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent text-center md:text-left">
+              <h2 className="text-2xl md:text-3xl text-center font-bold mb-6 bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent">
                 Our Journey
               </h2>
-              <p className="text-gray-800 text-lg leading-relaxed mb-4">
+              <p className="text-gray-800 text-center text-lg leading-relaxed mb-4">
                 In September 2024, fueled by our frustration and a commitment to elevate youth football,
                 we set out to create a league that puts the players first. We understood that a strong
                 foundation relies on world class basics; thus, we established a model built around keeping
                 time, high-frequency matches, advanced scheduling and proper refereeing.
               </p>
-              <p className="text-gray-800 text-lg leading-relaxed">
+              <p className="text-gray-800 text-center text-lg leading-relaxed">
                 With a successful Season 1 that received rave reviews from participating teams, the
                 Diamond Youth Football League quickly became a beacon of hope for teams, parents
                 and players alike, proving that league experiences can be organized, competitive,
@@ -69,10 +69,10 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Text Column */}
             <div className="order-1 md:order-1">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent text-center md:text-left">
+              <h2 className="text-2xl md:text-3xl text-center font-bold mb-6 bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent">
                 Our Vision
               </h2>
-              <p className="text-gray-800 text-lg leading-relaxed">
+              <p className="text-gray-800 text-center text-lg leading-relaxed">
                 Imagine feeling confident as a coach, knowing that your team is participating in a
                 structured, well-managed league. Picture the joy on your players&apos; faces as they compete
                 against other dedicated teams, all while enjoying ample game time and development
@@ -84,7 +84,7 @@ export default function About() {
             {/* Image Column */}
             <div className="relative h-[400px] rounded-[1.618rem] overflow-hidden shadow-xl order-2 md:order-2">
               <Image
-                src="/images/Home-LeagueInfo.jpg"
+                src="/images/DYFL-Photos/dyfl-28.jpg"
                 alt="Team photo of youth football players"
                 fill
                 className="object-cover"
@@ -98,17 +98,17 @@ export default function About() {
       <section className="py-4 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-[1.618rem] p-8 shadow-xl border border-orange-100 text-center">
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent mb-4">
+            <h2 className="text-xl font-bold bg-gradient-to-r from-[#FF4500] to-[#FF6B00] bg-clip-text text-transparent mb-4">
               Provide your young athletes with the competitive experiences they deserve!
             </h2>
             <a
               href="tel:+254750920779"
-              className="px-8 py-4 rounded-[1.618rem] bg-gradient-to-r from-[#FF4500] to-[#FF6B00] 
+              className="px-8 py-3 rounded-[1.618rem] bg-gradient-to-r from-[#FF4500] to-[#FF6B00] 
                        text-white font-semibold text-md shadow-lg hover:shadow-xl inline-flex items-center 
                        hover:from-[#FF2200] hover:to-[#FF4500] transition-all duration-300 
                        hover:scale-105 cursor-pointer"
             >
-              <Phone className="mr-2 w-5 h-5" />
+              <Phone className="mr-2 w-6 h-6 md:w-5 md:h-5" />
               Join Our League
             </a>
           </div>

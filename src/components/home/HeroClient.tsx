@@ -8,13 +8,74 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi
 } from "@/components/ui/carousel";
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export function HeroCarousel() {
+  // Use a smaller initial set of images for faster loading
+  const [visibleImages, setVisibleImages] = useState<number[]>([1, 2, 3, 4, 5]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalImages = 35;
+  const [api, setApi] = React.useState<CarouselApi>();
+
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
   );
+
+  // Load more images progressively as the user interacts with the carousel
+  useEffect(() => {
+    // After initial render, start loading the rest of the images in batches
+    const timer = setTimeout(() => {
+      const nextBatch = Array.from(
+        { length: Math.min(10, totalImages - visibleImages.length) }, 
+        (_, i) => i + visibleImages.length + 1
+      );
+      
+      if (nextBatch.length > 0) {
+        setVisibleImages(prev => [...prev, ...nextBatch]);
+      }
+    }, 5000); // Wait 5 seconds after initial load before loading more
+
+    return () => clearTimeout(timer);
+  }, [visibleImages]);
+
+  // Handle slide change to potentially load more images
+  const handleSlideChange = React.useCallback((index: number) => {
+    setCurrentIndex(index);
+    
+    // If we're approaching the end of loaded images, load more
+    if (index >= visibleImages.length - 3 && visibleImages.length < totalImages) {
+      const nextBatch = Array.from(
+        { length: Math.min(5, totalImages - visibleImages.length) }, 
+        (_, i) => i + visibleImages.length + 1
+      );
+      
+      if (nextBatch.length > 0) {
+        setVisibleImages(prev => [...prev, ...nextBatch]);
+      }
+    }
+  }, [visibleImages, totalImages]);
+
+  // Setup the slide change listener when the API is available
+  React.useEffect(() => {
+    if (!api) return;
+    
+    const onSelect = () => {
+      const selectedIndex = api.selectedScrollSnap();
+      handleSlideChange(selectedIndex);
+    };
+    
+    api.on("select", onSelect);
+    
+    // Initial call to handle the first slide
+    onSelect();
+    
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api, handleSlideChange]);
 
   return (
     <Carousel
@@ -22,18 +83,21 @@ export function HeroCarousel() {
       className="w-full"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
+      setApi={setApi}
     >
       <CarouselContent>
-        {[1, 2, 3].map((item) => (
-          <CarouselItem key={item}>
+        {visibleImages.map((number, index) => (
+          <CarouselItem key={number}>
             <div className="relative h-[250px] sm:h-[350px] lg:h-[450px] w-full p-1">
               <Image
-                src="/images/Hero-Image.jpg"
-                alt={`Young footballer in action ${item}`}
+                src={`/images/DYFL-Photos/dyfl-${number}.jpg`}
+                alt={`Diamond Youth Football League Photo ${number}`}
                 fill
-                priority
+                priority={number <= 2} // Only prioritize first 2 images
+                loading={number <= 5 ? "eager" : "lazy"} // Eager load first 5, lazy load the rest
                 className="object-cover rounded-[1.618rem]"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                quality={number <= 5 ? 85 : 75} // Higher quality for first visible images
               />
             </div>
           </CarouselItem>

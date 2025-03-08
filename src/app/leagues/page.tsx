@@ -19,7 +19,7 @@ export default function Leagues() {
       <div className="py-4 px-4 max-w-2xl mx-auto w-full">
         <div className="rounded-[1.618rem] overflow-hidden shadow-lg relative h-[400px]">
           <Image
-            src="/images/IMG-20250213-WA0003.jpg"
+            src="/images/DYFL-Photos/dyfl-35.jpg"
             alt="Youth football league action"
             fill
             className="object-cover"
@@ -35,7 +35,7 @@ export default function Leagues() {
           </h3>
           <p className="text-gray-800 text-center">
             <span className="font-medium">Under 12:</span> Players born 2013-2015<br />
-            <span className="font-medium">Under 15:</span> Players born 2010-2011
+            <span className="font-medium">Under 15:</span> Players born 2010-2012
           </p>
         </div>
       </div>
