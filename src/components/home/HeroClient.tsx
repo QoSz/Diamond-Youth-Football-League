@@ -16,7 +16,6 @@ import { useEffect, useState } from 'react';
 export function HeroCarousel() {
   // Use a smaller initial set of images for faster loading
   const [visibleImages, setVisibleImages] = useState<number[]>([1, 2, 3, 4, 5]);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const totalImages = 35;
   const [api, setApi] = React.useState<CarouselApi>();
 
@@ -43,8 +42,6 @@ export function HeroCarousel() {
 
   // Handle slide change to potentially load more images
   const handleSlideChange = React.useCallback((index: number) => {
-    setCurrentIndex(index);
-    
     // If we're approaching the end of loaded images, load more
     if (index >= visibleImages.length - 3 && visibleImages.length < totalImages) {
       const nextBatch = Array.from(
@@ -86,7 +83,7 @@ export function HeroCarousel() {
       setApi={setApi}
     >
       <CarouselContent>
-        {visibleImages.map((number, index) => (
+        {visibleImages.map((number) => (
           <CarouselItem key={number}>
             <div className="relative h-[250px] sm:h-[350px] lg:h-[450px] w-full p-1">
               <Image
