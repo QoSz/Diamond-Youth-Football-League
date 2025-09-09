@@ -17,9 +17,19 @@ export default function Navigation() {
           <Link 
             href="/" 
             onClick={() => setIsMobileMenuOpen(false)}
-            className="text-lg md:text-xl font-bold bg-gradient-to-r from-[#ff4500] to-[#ff6347] bg-clip-text text-transparent"
+            className="inline-flex items-center"
+            aria-label="Diamond Youth Football League Home"
           >
-            Diamond Youth Football League
+            <Image
+              src="/dyfl-logo.svg"
+              alt="Diamond Youth Football League logo"
+              width={200}
+              height={200}
+              priority
+              className="block h-16 w-auto object-contain shrink-0"
+              sizes="64px"
+            />
+            <span className="sr-only">Diamond Youth Football League</span>
           </Link>
         </div>
 

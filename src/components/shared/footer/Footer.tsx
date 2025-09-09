@@ -1,5 +1,6 @@
 import { Instagram, Phone } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -7,9 +8,18 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         {/* Logo Section */}
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-[#ff4500] to-[#ff6347] bg-clip-text text-transparent">
-            Diamond Youth Football League
-          </h2>
+          <div className="inline-flex items-center justify-center rounded-xl bg-white p-1 shadow">
+            <Image 
+              src="/dyfl-logo.svg" 
+              alt="Diamond Youth Football League logo" 
+              width={192} 
+              height={192} 
+              className="h-24 w-auto md:h-28 lg:h-32 object-contain"
+              sizes="(max-width: 768px) 6rem, (max-width: 1024px) 7rem, 8rem"
+              priority
+            />
+          </div>
+          <span className="sr-only">Diamond Youth Football League</span>
         </div>
 
         {/* Contact & Socials Row */}

@@ -34,8 +34,9 @@ export default function Leagues() {
             Age Groups
           </h3>
           <p className="text-gray-800 text-center">
-            <span className="font-medium">Under 12:</span> Players born 2013-2015<br />
-            <span className="font-medium">Under 15:</span> Players born 2010-2012
+            <span className="font-medium">Under 11:</span> Players born 2014-2015<br />
+            <span className="font-medium">Under 13:</span> Players born 2012-2013<br />
+            <span className="font-medium">Under 15:</span> Players born 2010-2011
           </p>
         </div>
       </div>
@@ -82,13 +83,18 @@ export default function Leagues() {
         </h2>
         {/* Simplified table container */}
         <div className="overflow-x-auto">
-          <table className="w-full divide-y divide-[#FF4500]">
+          <table className="w-full min-w-[760px] md:min-w-0 divide-y divide-[#FF4500]">
             <thead>
               <tr>
-                <th className="w-1/3 p-4 text-lg font-bold text-gray-800 text-left"></th>
+                <th className="w-1/4 px-3 py-4 text-lg font-bold text-gray-800 text-left"></th>
                 <th className="p-4 text-center">
                   <div className="text-[#FF4500] text-sm md:text-base lg:text-lg">
-                    UNDER 12
+                    UNDER 11
+                  </div>
+                </th>
+                <th className="p-4 text-center">
+                  <div className="text-[#FF4500] text-sm md:text-base lg:text-lg">
+                    UNDER 13
                   </div>
                 </th>
                 <th className="p-4 text-center">
@@ -102,61 +108,74 @@ export default function Leagues() {
               {[
                 {
                   category: 'Age Group',
-                  u12: 'Born 2013-2015',
-                  u15: 'Born 2010-2012'
+                  u11: 'Born 2014-2015',
+                  u13: 'Born 2012-2013',
+                  u15: 'Born 2010-2011'
                 },
                 {
                   category: 'Team Structure',
-                  u12: '7-a-side',
+                  u11: '7-a-side',
+                  u13: '9-a-side',
                   u15: '11-a-side'
                 },
                 {
                   category: 'Matchday Squad',
-                  u12: '12 players',
+                  u11: '12 players',
+                  u13: '14 players',
                   u15: '16 players'
                 },
                 {
                   category: 'Full Roster',
-                  u12: '20 players',
+                  u11: '20 players',
+                  u13: '22 players',
                   u15: '24 players'
                 },
                 {
                   category: 'Match Duration',
-                  u12: '20 minutes * 3',
-                  u15: '35 minutes * 2'
+                  u11: '1 hour (3×20 min)',
+                  u13: '1 hour (2×30 min halves)',
+                  u15: '70 mins (2×35 min halves)'
                 },
                 {
                   category: 'Substitutions',
-                  u12: 'Unlimited rolling substitutions',
-                  u15: 'Unlimited rolling substitutions'
+                  u11: 'Unlimited rolling',
+                  u13: 'Unlimited rolling',
+                  u15: 'Unlimited rolling'
                 },
                 {
                   category: 'Field Size',
-                  u12: '55m x 35m',
+                  u11: '55m × 35m',
+                  u13: '73m × 45m',
                   u15: 'Full-size pitch'
                 },
                 {
                   category: 'Ball Size',
-                  u12: 'Size 4',
+                  u11: 'Size 4',
+                  u13: 'Size 5',
                   u15: 'Size 5'
                 },
                 {
                   category: 'Officials',
-                  u12: '1 referee',
-                  u15: '1 referee + 2 linesmen'
+                  u11: '1 referee',
+                  u13: '1 referee',
+                  u15: '1 referee, 2 linesmen'
                 },
                 {
                   category: 'Medical Support',
-                  u12: '1st Aider provided',
+                  u11: '1st Aider provided',
+                  u13: '1st Aider provided',
                   u15: '1st Aider provided'
                 }
               ].map((row) => (
                 <tr key={row.category}>
-                  <td className="px-2 py-2 md:px-4 font-bold text-gray-800 text-xs md:text-sm lg:text-base">
+                  <td className="px-2 md:px-3 py-2 font-bold text-gray-800 text-xs md:text-sm lg:text-base">
                     {row.category}
                   </td>
                   <td className="px-2 py-2 md:px-4 text-gray-800 text-xs md:text-sm lg:text-base text-center">
-                    {row.u12}
+                    {row.u11}
+                  </td>
+                  <td className="px-2 py-2 md:px-4 text-gray-800 text-xs md:text-sm lg:text-base text-center">
+                    {row.u13}
                   </td>
                   <td className="px-2 py-2 md:px-4 text-gray-800 text-xs md:text-sm lg:text-base text-center">
                     {row.u15}
