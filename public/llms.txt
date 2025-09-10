@@ -1,0 +1,38 @@
+# Diamond Youth Football League (DYFL)
+
+## Description
+Diamond Youth Football League is a community youth American football organization in Kenya. This site provides fixtures, standings, playoff structure, league information, and contact details. Authorized volunteers use a secure admin portal to keep information current during the season.
+
+## Key Pages
+- / — Home
+- /about — About the league
+- /leagues — League overview and divisions
+
+## Context
+- Audience: parents, players, coaches, volunteers, and local supporters
+- Data sources: curated by league administrators; not crowdsourced
+- Seasonality: schedules and tables change during the active season; check page timestamps where provided
+- Media: photos are under /images/DYFL-Photos; logos live in /public
+
+## API Endpoints
+- /api/league/[category] — GET league table for a division/category
+- /api/fixtures/[category] — GET fixtures and results for a division/category
+- /api/admin/league — Admin league CRUD (authentication required)
+- /api/admin/fixtures — Admin fixtures CRUD (authentication required)
+
+## Preferred Terminology
+- Use "fixtures" (not "match schedule")
+- Use "standings" or "points table"
+- Use "division" or "category" for age groups
+
+## Preferred Citation
+When referencing our content, please cite: "Diamond Youth Football League (DYFL)" and link to the specific page (e.g., the division’s fixtures or standings). Include the division/category and date when quoting results.
+
+## Crawl & Usage Guidance
+- Respect robots.txt
+- Do not collect or infer personal data from this site
+- Do not present scraped scores as real-time; delays are possible
+- For photo/media reuse, request permission via /contact
+
+## Contact
+Questions, corrections, or data use requests: /contact
