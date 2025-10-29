@@ -34,7 +34,7 @@ export default function About() {
             {/* Image Column */}
             <div className="relative h-[400px] rounded-[1.618rem] overflow-hidden shadow-xl">
               <Image
-                src="/images/DYFL-Photos/dyfl-15.jpg"
+                src="https://placehold.co/1200x800?text=About+Image+1"
                 alt="Youth football match in progress"
                 fill
                 className="object-cover"
@@ -84,7 +84,7 @@ export default function About() {
             {/* Image Column */}
             <div className="relative h-[400px] rounded-[1.618rem] overflow-hidden shadow-xl order-2 md:order-2">
               <Image
-                src="/images/DYFL-Photos/dyfl-17.jpg"
+                src="https://placehold.co/1200x800?text=About+Image+2"
                 alt="Team photo of youth football players"
                 fill
                 className="object-cover"

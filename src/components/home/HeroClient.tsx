@@ -87,14 +87,14 @@ export function HeroCarousel() {
           <CarouselItem key={number}>
             <div className="relative h-[250px] sm:h-[350px] lg:h-[450px] w-full p-1">
               <Image
-                src={`/images/DYFL-Photos/dyfl-${number}.jpg`}
+                src={`https://placehold.co/1600x900?text=DYFL+Photo+${number}`}
                 alt={`Diamond Youth Football League Photo ${number}`}
                 fill
-                priority={number <= 2} // Only prioritize first 2 images
-                loading={number <= 5 ? "eager" : "lazy"} // Eager load first 5, lazy load the rest
+                priority={number <= 2}
+                loading={number <= 5 ? "eager" : "lazy"}
                 className="object-cover rounded-[1.618rem]"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                quality={number <= 5 ? 85 : 75} // Higher quality for first visible images
+                quality={number <= 5 ? 85 : 75}
               />
             </div>
           </CarouselItem>

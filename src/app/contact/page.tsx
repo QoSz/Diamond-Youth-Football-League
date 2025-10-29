@@ -11,7 +11,7 @@ export default function Contact() {
             {/* Background Image */}
             <div className="fixed inset-0 z-0">
                 <Image
-                    src="/images/Contact-Background.png"
+                    src="https://placehold.co/1600x900?text=Contact+Background"
                     alt="Contact Background"
                     fill
                     priority

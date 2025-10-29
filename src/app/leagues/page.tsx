@@ -19,7 +19,7 @@ export default function Leagues() {
       <div className="py-4 px-4 max-w-2xl mx-auto w-full">
         <div className="rounded-[1.618rem] overflow-hidden shadow-lg relative h-[400px]">
           <Image
-            src="/images/DYFL-Photos/dyfl-22.jpg"
+            src="https://placehold.co/1200x800?text=League+Placeholder"
             alt="Youth football league action"
             fill
             className="object-cover"
