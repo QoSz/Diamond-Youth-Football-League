@@ -185,7 +185,7 @@ export default function Leagues() {
           </p>
           <div className="flex justify-center">
             <a
-              href="https://docs.google.com/spreadsheets/u/0/d/1Z0KEM2TNrZGvOrQdX-nAiEOdktiBQbRFB4u4AB3KRq4/htmlview#"
+              href="https://docs.google.com/spreadsheets/d/1lsM6HqFUO-12uXe-FSZiP3JoX9cz2VSgDJALCUqFujs/edit?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-[#FF4500] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#FF5500] transition-colors duration-300 hover:shadow-lg"
