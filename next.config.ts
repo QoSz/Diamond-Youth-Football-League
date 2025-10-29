@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  // No need to expose credentials here
+const nextConfig = {
+  images: {
+    qualities: [60, 75, 85, 90, 100],
+  },
 };
 
 export default nextConfig;

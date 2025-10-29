@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react';
 export function HeroCarousel() {
   // Use a smaller initial set of images for faster loading
   const [visibleImages, setVisibleImages] = useState<number[]>([1, 2, 3, 4, 5]);
-  const totalImages = 35;
+  const totalImages = 22;
   const [api, setApi] = React.useState<CarouselApi>();
 
   const plugin = React.useRef(
