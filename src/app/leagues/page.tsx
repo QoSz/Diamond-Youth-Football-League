@@ -1,5 +1,4 @@
 import { ChevronRight } from 'lucide-react';
-import Image from 'next/image';
 
 export default function Leagues() {
   return (
@@ -13,18 +12,6 @@ export default function Leagues() {
           Delivering a high-quality, well-organized, and competitive experience that supports the
           development of young footballers as athletes and individuals.
         </p>
-      </div>
-
-      {/* Image section added here */}
-      <div className="py-4 px-4 max-w-2xl mx-auto w-full">
-        <div className="rounded-[1.618rem] overflow-hidden shadow-lg relative h-[400px]">
-          <Image
-            src="https://placehold.co/1200x800?text=League+Placeholder"
-            alt="Youth football league action"
-            fill
-            className="object-cover"
-          />
-        </div>
       </div>
 
       {/* Age Group Notes - simplified container */}
