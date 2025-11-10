@@ -15,7 +15,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl">
-            We combine competitive play, dedicated coaching, and a welcoming community to help every young athlete grow on and off the field.
+            Competitive play, dedicated coaching, and a welcoming community to help every young athlete grow on and off the field.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
