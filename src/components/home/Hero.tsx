@@ -5,22 +5,22 @@ export default function Hero() {
     <section className="bg-gradient-to-br from-black to-[#1A1A1A] overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 py-20">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center space-y-8">
-          <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
+          <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
             Diamond Youth Football League
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
             Reliable League
             <span className="block bg-gradient-to-r from-[#FF4500] to-[#FF6B00] text-transparent bg-clip-text">
               Exceptional Experiences
             </span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl">
+          <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-2xl">
             Competitive play, dedicated coaching, and a welcoming community to help every young athlete grow on and off the field.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/leagues"
-              className="inline-flex items-center px-6 py-3 rounded-[1.618rem] bg-gradient-to-r from-[#FF4500] to-[#FF6B00] text-white font-semibold hover:opacity-90 transition-opacity text-base sm:text-lg"
+              className="inline-flex items-center px-6 py-3 rounded-[1.618rem] bg-gradient-to-r from-[#FF4500] to-[#FF6B00] text-white font-semibold hover:opacity-90 transition-opacity text-sm sm:text-base"
             >
               Join League
               <svg

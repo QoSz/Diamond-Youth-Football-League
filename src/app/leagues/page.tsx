@@ -5,10 +5,10 @@ export default function Leagues() {
     <div className="bg-gradient-to-br from-white via-orange-50 to-white animate-gradient-shift min-h-screen">
       {/* Content container */}
       <div className="py-4 px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-center text-[#FF4500] pb-8">
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-[#FF4500] pb-8">
           Leagues
         </h1>
-        <p className="text-center text-gray-800 max-w-2xl mx-auto text-lg">
+        <p className="text-center text-gray-800 max-w-2xl mx-auto text-base">
           Delivering a high-quality, well-organized, and competitive experience that supports the
           development of young footballers as athletes and individuals.
         </p>
@@ -17,7 +17,7 @@ export default function Leagues() {
       {/* Age Group Notes - simplified container */}
       <div className="py-4 px-4 max-w-md mx-auto w-full">
         <div className="bg-[#FFE7C9] p-6 rounded-xl">
-          <h3 className="text-xl text-center font-semibold text-[#FF4500] mb-2">
+          <h3 className="text-lg text-center font-semibold text-[#FF4500] mb-2">
             Age Groups
           </h3>
           <p className="text-gray-800 text-center">
@@ -31,7 +31,7 @@ export default function Leagues() {
       {/* Calendar Section - simplified container */}
       <div className="py-4 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+          <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
             Calendar - 2025
           </h2>
 
@@ -55,8 +55,8 @@ export default function Leagues() {
                 key={index}
                 className="bg-black rounded-[1.618rem] p-6 text-center text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                <h3 className="text-2xl font-bold mb-4 text-[#FF4500]">{item.season}</h3>
-                <p className="text-green-50/90 text-xl">{item.date}</p>
+                <h3 className="text-xl font-bold mb-4 text-[#FF4500]">{item.season}</h3>
+                <p className="text-green-50/90 text-lg">{item.date}</p>
               </div>
             ))}
           </div>
@@ -65,7 +65,7 @@ export default function Leagues() {
 
       {/* Format Section - removed redundant wrapper div */}
       <div className="container mx-auto px-4 py-4">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
           Format
         </h2>
         {/* Simplified table container */}
@@ -73,19 +73,19 @@ export default function Leagues() {
           <table className="w-full min-w-[760px] md:min-w-0 divide-y divide-[#FF4500]">
             <thead>
               <tr>
-                <th className="w-1/4 px-3 py-4 text-lg font-bold text-gray-800 text-left"></th>
+                <th className="w-1/4 px-3 py-4 text-base font-bold text-gray-800 text-left"></th>
                 <th className="p-4 text-center">
-                  <div className="text-[#FF4500] text-sm md:text-base lg:text-lg">
+                  <div className="text-[#FF4500] text-xs md:text-sm lg:text-base">
                     UNDER 11
                   </div>
                 </th>
                 <th className="p-4 text-center">
-                  <div className="text-[#FF4500] text-sm md:text-base lg:text-lg">
+                  <div className="text-[#FF4500] text-xs md:text-sm lg:text-base">
                     UNDER 13
                   </div>
                 </th>
                 <th className="p-4 text-center">
-                  <div className="text-[#FF4500] text-sm md:text-base lg:text-lg">
+                  <div className="text-[#FF4500] text-xs md:text-sm lg:text-base">
                     UNDER 15
                   </div>
                 </th>
@@ -177,10 +177,10 @@ export default function Leagues() {
       {/* Fixtures Link Section - simplified container */}
       <div className="py-4 pb-8 px-4">
         <div className="max-w-2xl mx-auto bg-[#FFE7C9] p-6 rounded-xl">
-          <h2 className="text-3xl text-center font-bold text-gray-800 mb-4">
+          <h2 className="text-2xl text-center font-bold text-gray-800 mb-4">
             Results & Fixtures
           </h2>
-          <p className="text-gray-800 text-center mb-6 text-lg">
+          <p className="text-gray-800 text-center mb-6 text-base">
             Follow the league for the current season
           </p>
           <div className="flex justify-center">
@@ -188,7 +188,7 @@ export default function Leagues() {
               href="https://docs.google.com/spreadsheets/d/1lsM6HqFUO-12uXe-FSZiP3JoX9cz2VSgDJALCUqFujs/edit?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#FF4500] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#FF5500] transition-colors duration-300 hover:shadow-lg"
+              className="inline-flex items-center justify-center bg-[#FF4500] text-white px-8 py-3 rounded-full text-base font-semibold hover:bg-[#FF5500] transition-colors duration-300 hover:shadow-lg"
             >
               Results and Fixtures
               <ChevronRight className="ml-2 h-5 w-5" />

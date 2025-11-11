@@ -7,13 +7,13 @@ export default function LeagueValue() {
       <div className="absolute inset-0 bg-gradient-to-br from-white via-orange-50 to-white animate-gradient-shift"></div>
 
       <div className="container mx-auto px-4 relative">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-black">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-black">
           Are you tired of poorly organized leagues hindering your team&apos;s progress?
         </h2>
 
         {/* Problems Section - added gradient effect */}
         <div className="mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#FF4500] to-[#FF8C00]">
+          <h3 className="text-xl md:text-2xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#FF4500] to-[#FF8C00]">
             Avoid the Frustration of Poorly Run Leagues:
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -33,7 +33,7 @@ export default function LeagueValue() {
                     <ShieldOff key="shield" className="w-12 h-12 text-red-500 stroke-[1.5]" />
                   ][index]}
                 </div>
-                <p className="text-gray-800 text-lg font-medium">{problem}</p>
+                <p className="text-gray-800 text-base font-medium">{problem}</p>
               </div>
             ))}
           </div>
@@ -41,7 +41,7 @@ export default function LeagueValue() {
 
         {/* Solution Section - with glowing cards */}
         <div className="mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-400">
+          <h3 className="text-xl md:text-2xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-400">
             Join a League That Values Consistency:
           </h3>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -61,23 +61,23 @@ export default function LeagueValue() {
                     <ShieldCheck key="shield-check" className="w-12 h-12 text-green-500 stroke-[1.5]" />
                   ][index]}
                 </div>
-                <p className="text-gray-800 text-lg font-medium">{benefit}</p>
+                <p className="text-gray-800 text-base font-medium">{benefit}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="text-center my-12">
-          <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF4500] to-[#FF8C00] mb-4">
+          <h3 className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF4500] to-[#FF8C00] mb-4">
             With a successful first season, we prioritize quality gameplay.
           </h3>
-          <p className="text-xl text-gray-700">
+          <p className="text-lg text-gray-700">
             100% of teams reported a better experience than previous leagues.
           </p>
         </div>
 
         <div className="mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
+          <h3 className="text-xl md:text-2xl font-bold text-center mb-8">
             <span className="relative">
               3 Simple Steps to Join Us
             </span>
@@ -105,10 +105,10 @@ export default function LeagueValue() {
                           border border-orange-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 
                           transition-all duration-300 transform perspective-1000">
                 <div className="group">{step.icon}</div>
-                <div className="text-2xl font-bold bg-gradient-to-r from-[#FF4500] to-[#FF8C00] bg-clip-text text-transparent mb-2">
+                <div className="text-xl font-bold bg-gradient-to-r from-[#FF4500] to-[#FF8C00] bg-clip-text text-transparent mb-2">
                   Step {step.step}
                 </div>
-                <p className="text-gray-800 text-xl font-semibold">{step.title}</p>
+                <p className="text-gray-800 text-lg font-semibold">{step.title}</p>
               </div>
             ))}
           </div>
@@ -117,10 +117,10 @@ export default function LeagueValue() {
         {/* CTA Section - with pulsing animation */}
         <div className="text-center relative">
           <div className="absolute inset-0 bg-gradient-to-r from-orange-100 via-white to-orange-100 rounded-[2rem] -z-10"></div>
-          <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-[#1A1A1A] to-[#454545] bg-clip-text text-transparent">
+          <h3 className="text-xl md:text-2xl font-bold mb-4 bg-gradient-to-r from-[#1A1A1A] to-[#454545] bg-clip-text text-transparent">
             Your Frustration Ends Here
           </h3>
-          <p className="text-xl text-gray-700 mb-8">
+          <p className="text-lg text-gray-700 mb-8">
             Your journey to a better league experience starts now!
           </p>
           <a
