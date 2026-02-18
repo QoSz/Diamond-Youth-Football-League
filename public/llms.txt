@@ -1,7 +1,7 @@
 # Diamond Youth Football League (DYFL)
 
 ## Description
-Diamond Youth Football League is a community youth American football organization in Kenya. This site provides fixtures, standings, playoff structure, league information, and contact details. Authorized volunteers use a secure admin portal to keep information current during the season.
+Diamond Youth Football League is a community youth football organization in Kenya. This site provides fixtures, standings, playoff structure, league information, and contact details. Authorized volunteers use a secure admin portal to keep information current during the season.
 
 ## Key Pages
 - / — Home

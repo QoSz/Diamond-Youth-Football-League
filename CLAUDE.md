@@ -123,9 +123,9 @@ This will automatically place components in `src/components/ui/` with correct co
 
 ### League Information
 The site displays information for three age groups:
-- Under 11: 7-a-side, players born 2014-2015
-- Under 13: 9-a-side, players born 2012-2013
-- Under 15: 11-a-side, players born 2010-2011
+- Under 12: 7-a-side, players born 2014-2015
+- Under 14: 9-a-side, players born 2012-2013
+- Under 16: 11-a-side, players born 2010-2011
 
 ### External Integration
 Results and fixtures link to a Google Sheets document (see `/leagues` page).

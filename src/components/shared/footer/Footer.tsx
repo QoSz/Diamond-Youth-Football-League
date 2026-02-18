@@ -1,6 +1,7 @@
 import { Instagram, Phone } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import CopyrightYear from './CopyrightYear';
 
 const Footer = () => {
   return (
@@ -9,25 +10,37 @@ const Footer = () => {
         {/* Logo Section */}
         <div className="text-center mb-6">
           <div className="inline-flex items-center justify-center rounded-xl bg-white p-1 shadow">
-            <Image 
-              src="/dyfl-logo.svg" 
-              alt="Diamond Youth Football League logo" 
-              width={192} 
-              height={192} 
+            <Image
+              src="/dyfl-logo.svg"
+              alt="Diamond Youth Football League logo"
+              width={192}
+              height={192}
               className="h-24 w-auto md:h-28 lg:h-32 object-contain"
               sizes="(max-width: 768px) 6rem, (max-width: 1024px) 7rem, 8rem"
-              priority
             />
           </div>
           <span className="sr-only">Diamond Youth Football League</span>
         </div>
+
+        {/* Footer Navigation */}
+        <nav aria-label="Footer navigation" className="flex justify-center gap-6 mb-6">
+          <Link href="/" className="text-sm text-white/70 hover:text-white transition-colors">
+            Home
+          </Link>
+          <Link href="/about" className="text-sm text-white/70 hover:text-white transition-colors">
+            About
+          </Link>
+          <Link href="/leagues" className="text-sm text-white/70 hover:text-white transition-colors">
+            Leagues
+          </Link>
+        </nav>
 
         {/* Contact & Socials Row */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
           {/* Phone Section */}
           <div className="flex items-center gap-2 group">
             <Phone className="w-5 h-5 text-orange-400" />
-            <a 
+            <a
               href="tel:+254750920779"
               className="text-orange-400 hover:text-orange-300 transition-colors font-medium"
             >
@@ -46,6 +59,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              aria-label="Follow Diamond Youth Football League on Instagram"
             >
               <Instagram className="w-5 h-5 text-orange-400" />
             </Link>
@@ -57,7 +71,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center">
           <p className="text-sm text-white/80">
-            © {new Date().getFullYear()} Diamond Youth Football League. All rights reserved.
+            © <CopyrightYear /> Diamond Youth Football League. All rights reserved.
           </p>
           <p className="text-sm text-white/60 mt-2">Nairobi, Kenya</p>
         </div>

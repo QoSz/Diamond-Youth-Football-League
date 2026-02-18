@@ -50,12 +50,11 @@ export default function Navigation() {
               <User className="h-4 w-4" />
               <span>About</span>
             </Link>
-
             <Link
               href="/leagues"
               className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80"
             >
-              <Image src="/football.svg" alt="Leagues" width={16} height={16} />
+              <Image src="/football.svg" alt="" width={16} height={16} aria-hidden="true" />
               <span>Leagues</span>
             </Link>
           </div>
@@ -68,6 +67,7 @@ export default function Navigation() {
               className="ml-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
+              aria-label="Toggle navigation menu"
             >
               <span className="sr-only">Toggle menu</span>
               {isMobileMenuOpen ? (
@@ -77,6 +77,7 @@ export default function Navigation() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -92,6 +93,7 @@ export default function Navigation() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -120,7 +122,6 @@ export default function Navigation() {
               <Home className="h-4 w-4" />
               <span>Home</span>
             </Link>
-
             <Link
               href="/about"
               className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80 py-2"
@@ -129,13 +130,12 @@ export default function Navigation() {
               <User className="h-4 w-4" />
               <span>About Us</span>
             </Link>
-
             <Link
               href="/leagues"
               className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80 py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <Image src="/football.svg" alt="Leagues" width={16} height={16} />
+              <Image src="/football.svg" alt="" width={16} height={16} aria-hidden="true" />
               <span>Leagues</span>
             </Link>
           </div>
